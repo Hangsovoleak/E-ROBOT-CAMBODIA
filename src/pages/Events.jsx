@@ -52,9 +52,6 @@ const Events = () => {
     <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f8fafc] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* =========================
-            HEADER TITLE CARD
-        ========================== */}
         <div className="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80 text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
           <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
@@ -62,9 +59,6 @@ const Events = () => {
           </p>
         </div>
 
-        {/* =========================
-            ZIGZAG ACTIVITIES GRID FEED
-        ========================== */}
         <div className="space-y-16 md:space-y-24">
           {activities.map((act, index) => {
             const isEven = index % 2 === 0;

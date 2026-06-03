@@ -75,7 +75,7 @@ function AboutUs() {
                     {/* WHAT WE ARE - Modern Presentation Card Frame Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-16 items-start mb-24">
                         <div className="lg:sticky lg:top-24 rounded-[2rem] p-6 sm:p-8">
-                            <p className="text-sm uppercase tracking-[0.35em] text-[#ff383c] font-black">តើពួកយើងជានរណា?</p>
+                            <p className="text-sm uppercase text-[#ff383c] font-black">តើពួកយើងជានរណា?</p>
                             <p className="text-[#192048] text-2xl md:text-4xl font-black mt-3 mb-4 uppercase tracking-tight m-0">
                                 ស្វែងយល់អំពីពួកយើង
                             </p>
@@ -92,7 +92,7 @@ function AboutUs() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center my-24">
                         <div className="w-full">
                             <div className="max-w-xl">
-                                <p className="text-sm uppercase tracking-[0.35em] text-[#ff383c] font-black">វិធីសាស្ត្រសិក្សា</p>
+                                <p className="text-sm uppercase text-[#ff383c] font-black">វិធីសាស្ត្រសិក្សា</p>
                                 <p className="text-[#192048] text-2xl md:text-4xl font-black mt-3 mb-4 uppercase tracking-tight m-0">
                                     តើអ្នកអាចស្គាល់ពួកយើងតាមរបៀបណា?
                                 </p>

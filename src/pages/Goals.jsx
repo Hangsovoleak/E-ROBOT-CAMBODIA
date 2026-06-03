@@ -41,7 +41,7 @@ function Goals() {
           <div className="space-y-8">
             {/* Header Content Presentation Frame */}
             <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80">
-              <p className="text-sm uppercase tracking-[0.35em] text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</p>
+              <p className="text-sm uppercase text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</p>
               <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
                 គោលដៅរបស់ E-ROBOT
               </p>
@@ -62,7 +62,7 @@ function Goals() {
                     <div className="flex items-center justify-center w-12 h-12 rounded-3xl bg-[#ff383c]/10 text-[#ff383c] mb-4">
                       {item.sticker}
                     </div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-slate-400 font-bold">ជំហានទី ០{item.id}</p>
+                    <p className="text-xs uppercase text-slate-400 font-bold">ជំហានទី ០{item.id}</p>
                     <p className="mt-3 text-base font-bold text-slate-800 leading-relaxed">
                       {item.title}
                     </p>
@@ -74,7 +74,7 @@ function Goals() {
 
           {/* Right Side Showcase Panel: Sticker Display Base Container */}
           <div className="rounded-[2rem] bg-[#192048] p-8 shadow-2xl text-white text-center flex flex-col items-center justify-center min-h-[460px]">
-            <p className="text-sm uppercase tracking-[0.35em] text-[#ffcbc5]">ការច្នៃប្រឌិត & ការអភិវឌ្ឍ</p>
+            <p className="text-sm uppercase text-[#ffcbc5]">ការច្នៃប្រឌិត & ការអភិវឌ្ឍ</p>
             <h3 className="mt-4 text-2xl sm:text-3xl font-black leading-tight max-w-sm">
               រួមគ្នាបង្កើតអនាគតឌីជីថលដ៏ភ្លឺស្វាងសម្រាប់កុមារគ្រប់រូប
             </h3>

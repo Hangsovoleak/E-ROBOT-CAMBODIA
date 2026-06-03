@@ -26,7 +26,7 @@ const Sharing = () => {
         ========================== */}
         <div className="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80 text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
-          <p className="text-sm uppercase tracking-[0.35em] text-[#ff383c] font-black">បណ្ណាល័យចំណែករំលែក</p>
+          <p className="text-sm uppercase text-[#ff383c] font-black">បណ្ណាល័យចំណែករំលែក</p>
           <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
             មាតិកាផ្សេងៗរបស់ <span className="text-[#ff383c]">E-ROBOT</span>
           </p>

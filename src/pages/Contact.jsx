@@ -15,7 +15,7 @@ function Contact() {
               ទាក់ទងមកកាន់ក្រុមការងារ E-ROBOT
             </p>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-2xl">
-              យើងរីករាយបានជួយអ្នកទាំងអស់គ្នា។ សូមស្កែន QR Code ឬទាក់ទងតាមរយៈព័ត៌មានខាងក្រោម ហើយយើងនឹងតបប្រតិកម្មក្នុងរយៈពេលឆាប់ៗនេះ។
+              យើងរីករាយនៅក្នុងការជួយអ្នកទាំងអស់គ្នា។ សូមស្កែន QR Code ឬទាក់ទងតាមរយៈព័ត៌មានខាងក្រោម ហើយយើងនឹងតបទៅកាន់អ្នកក្នុងពេលឆាប់ៗនេះ។
             </p>
           </div>
 
@@ -49,7 +49,7 @@ function Contact() {
                 <div className="flex items-center justify-center w-12 h-12 rounded-3xl bg-[#ff383c]/10 text-[#ff383c] mb-4">
                   {item.icon}
                 </div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{item.title}</p>
+                <p className="text-xs uppercase text-slate-400">{item.title}</p>
                 <p className="mt-3 text-base font-semibold text-slate-800">{item.value}</p>
               </article>
             ))}
