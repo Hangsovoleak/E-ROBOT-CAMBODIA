@@ -2,7 +2,6 @@ import sticker from '../assets/erobotsticker.png';
 import GridGoals from '../components/GridGoals';
 import { Dice1, Dice2, Dice3, Dice4 } from 'lucide-react';
 import ImageGoal from '../components/ImageGoals';
-import Subscribe from '../components/Subscribe';
 
 const CardData = [
   {
@@ -32,14 +31,10 @@ function Goals() {
     <div className="min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 md:px-10 lg:px-16 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* =========================
-            SECTION 1: Core Goals Layout Grid
-        ========================== */}
         <div className="grid gap-12 lg:grid-cols-[0.9fr_0.7fr] items-start">
           
-          {/* Left Side Grouping: Introduction Header & Goals Stack */}
           <div className="space-y-8">
-            {/* Header Content Presentation Frame */}
+            
             <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80">
               <p className="text-sm uppercase text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</p>
               <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
@@ -50,7 +45,6 @@ function Goals() {
               </p>
             </div>
 
-            {/* Main Interactive Goals List Content */}
             <div className="grid gap-4 sm:grid-cols-2">
               {CardData.map((item) => (
                 <article
@@ -58,7 +52,6 @@ function Goals() {
                   className="rounded-[1.75rem] bg-white p-6 shadow-lg border border-slate-200/80 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Soft Red-Tint Icon Frame Container */}
                     <div className="flex items-center justify-center w-12 h-12 rounded-3xl bg-[#ff383c]/10 text-[#ff383c] mb-4">
                       {item.sticker}
                     </div>
@@ -72,7 +65,6 @@ function Goals() {
             </div>
           </div>
 
-          {/* Right Side Showcase Panel: Sticker Display Base Container */}
           <div className="rounded-[2rem] bg-[#192048] p-8 shadow-2xl text-white text-center flex flex-col items-center justify-center min-h-[460px]">
             <p className="text-sm uppercase text-[#ffcbc5]">ការច្នៃប្រឌិត & ការអភិវឌ្ឍ</p>
             <h3 className="mt-4 text-2xl sm:text-3xl font-black leading-tight max-w-sm">
@@ -90,18 +82,11 @@ function Goals() {
 
         </div>
 
-        {/* =========================
-            SECTION 2: Grid Goals Module Block
-        ========================== */}
         <div className="my-24">
           <GridGoals />
         </div>
 
-        {/* =========================
-            SECTION 3: Visions & Creative Objectives
-        ========================== */}
         <div className="space-y-8">
-          {/* Section Central Banner Headline Card */}
           <div className="max-w-3xl mx-auto rounded-[2rem] bg-white p-8 shadow-xl border border-slate-200/80 text-center mb-12">
             <p className="mt-3 text-3xl sm:text-4xl font-black text-[#192048] m-0">
               ចក្ខុវិស័យរបស់ E-ROBOT
@@ -111,13 +96,6 @@ function Goals() {
           <div className="rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-200/80 p-4 sm:p-6 md:p-8">
             <ImageGoal />
           </div>
-        </div>
-
-        {/* =========================
-            SECTION 4: Call to Actions / Subscribe Form
-        ========================== */}
-        <div className="mt-24">
-          <Subscribe />
         </div>
 
       </div>

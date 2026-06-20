@@ -76,7 +76,7 @@ function Navbar() {
                     : "bg-[#FF383C] text-white hover:bg-[#ff5256] hover:scale-[1.02]"
                 }`}
               >
-                {activePanel === 'donation' ? "បិទផ្ទាំងបង្អួច" : "ឧបត្ថម្ភមកពួកយើង"}
+                {activePanel === 'donation' ? "បិទ" : "ឧបត្ថម្ភមកពួកយើង"}
               </button>
 
               <button
@@ -87,7 +87,7 @@ function Navbar() {
                     : "bg-[#192048] dark:bg-blue-600 text-white hover:opacity-90 hover:scale-[1.02]"
                 }`}
               >
-                {activePanel === 'join' ? "បិទការចុះឈ្មោះ" : "ចូលរួមជាមួយពួកយើង"}
+                {activePanel === 'join' ? "បិទ" : "ចូលរួមជាមួយពួកយើង"}
               </button>
             </div>
 

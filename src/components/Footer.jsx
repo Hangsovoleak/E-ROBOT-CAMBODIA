@@ -2,8 +2,10 @@ import React from "react";
 
 import ERobotLogo from "../assets/ERobot.png";
 import Facebook from "../assets/facebook.png";
-import Instagram from "../assets/instagram.png";
-import Location from "../assets/google-maps.png";
+
+import about from "../pages/AboutUs";
+import goal from "../pages/Goals";
+import activity from "../pages/Events";
 
 function Footer() {
   return (
@@ -24,9 +26,6 @@ function Footer() {
         border-white/5
       "
     >
-      {/* =========================
-          Container
-      ========================== */}
 
       <div
         className="
@@ -42,13 +41,9 @@ function Footer() {
           md:gap-12
         "
       >
-        {/* =========================
-            Left Section
-        ========================== */}
 
         <div className="flex flex-col gap-6">
           
-          {/* Logo Area */}
           <div className="flex items-center gap-3">
             <img
               src={ERobotLogo}
@@ -79,7 +74,6 @@ function Footer() {
             </p>
           </div>
 
-          {/* Description */}
           <p
             className="
               text-white/60
@@ -98,10 +92,6 @@ function Footer() {
             ការអប់រំផ្នែកបច្ចេកវិទ្យាឱ្យកាន់តែរីកចម្រើន។
           </p>
 
-          {/* =========================
-              Social Icons
-          ========================== */}
-
           <div
             className="
               flex
@@ -110,7 +100,6 @@ function Footer() {
               gap-3
             "
           >
-            {/* Facebook */}
             <a
               href="https://www.facebook.com/share/1bJ4sJVeN8/?mibextid=wwXIfr"
               target="_blank"
@@ -139,73 +128,8 @@ function Footer() {
                 className="w-6 h-6 object-contain"
               />
             </a>
-
-            {/* Instagram */}
-            <a
-              href="#"
-              className="
-                w-12
-                h-12
-                
-                flex
-                items-center
-                justify-center
-                
-                bg-white/10
-                rounded-full
-                
-                hover:bg-white/20
-                hover:scale-110
-                
-                transition-all
-                duration-300
-              "
-            >
-              <img
-                src={Instagram}
-                alt="Instagram"
-                className="w-6 h-6 object-contain"
-              />
-            </a>
-
-            {/* Location */}
-            <div
-              className="
-                flex
-                items-center
-                gap-2
-                
-                px-3
-                py-2
-                
-                bg-white/10
-                rounded-full
-                
-                min-h-[3rem]
-              "
-            >
-              <img
-                src={Location}
-                alt="Location"
-                className="w-5 h-5 object-contain"
-              />
-
-              <span
-                className="
-                  text-xs
-                  sm:text-sm
-                  text-white/80
-                "
-              >
-                ភ្នំពេញ, ប្រទេសកម្ពុជា
-              </span>
-            </div>
           </div>
         </div>
-
-        {/* =========================
-            Middle Section
-        ========================== */}
 
         <div className="flex flex-col gap-5">
           <p
@@ -237,7 +161,7 @@ function Footer() {
           >
             <li>
               <a
-                href="#"
+                href={about}
                 className="hover:text-white transition-colors"
               >
                 អំពីយើង
@@ -246,7 +170,7 @@ function Footer() {
 
             <li>
               <a
-                href="#"
+                href={goal}
                 className="hover:text-white transition-colors"
               >
                 គោលដៅ
@@ -255,7 +179,7 @@ function Footer() {
 
             <li>
               <a
-                href="#"
+                href={activity}
                 className="hover:text-white transition-colors"
               >
                 ព្រឹត្តិការណ៍
@@ -268,15 +192,6 @@ function Footer() {
                 className="hover:text-white transition-colors"
               >
                 មាតិកាសិក្សា
-              </a>
-            </li>
-
-            <li>
-              <a
-                href="#"
-                className="hover:text-white transition-colors"
-              >
-                ម្ចាស់ឧបត្ថម្ភ
               </a>
             </li>
           </ul>

@@ -13,9 +13,6 @@ function AboutUs() {
     return (
         <div className="min-h-screen bg-[#f8fafc] w-full overflow-x-hidden antialiased">
 
-            {/* =========================
-                HERO SECTION (Optimized for Mobile Viewports)
-            ========================== */}
             <section className="relative min-h-screen lg:h-screen w-full overflow-hidden px-4 sm:px-6 md:px-10 lg:px-16 flex items-center">
                 <img
                     src={Image1}
@@ -27,7 +24,6 @@ function AboutUs() {
                 <div className="relative z-10 w-full max-w-7xl mx-auto py-24 lg:py-0">
                     <div className="max-w-4xl text-white">
                         
-                        {/* Friendly Pill Tag */}
                         <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md rounded-full px-4 py-1.5 shadow-sm">
                             <Satellite className="w-4 h-4 text-[#ff383c] animate-pulse" />
                             <span className="text-xs md:text-sm font-bold tracking-wide text-white/95">
@@ -35,7 +31,6 @@ function AboutUs() {
                             </span>
                         </div>
 
-                        {/* Responsive Typography Title with Line Safety Height */}
                         <p className="mt-6 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black leading-tight tracking-tight text-white m-0">
                           E-ROBOT
                         </p>
@@ -49,7 +44,6 @@ function AboutUs() {
                             យើងជឿជាក់ថា ការអប់រំគឺជាគន្លងដ៏សំខាន់ក្នុងការបង្កើតសង្គមដែលមានការរីកចម្រើន និងនវានុវត្តន៍។
                         </p>
 
-                        {/* CTA Links to the Goals page styled earlier */}
                         <div className="mt-8 flex flex-wrap gap-4">
                             <Link 
                                 to="/about" 
@@ -62,17 +56,12 @@ function AboutUs() {
                     </div>
                 </div>
                 
-                {/* Decorative bottom boundary arc wave curve */}
                 <div className="absolute bottom-0 left-0 right-0 h-12 bg-[#f8fafc] rounded-t-[2rem] hidden md:block" />
             </section>
 
-            {/* =========================
-                MAIN LAYOUT INNER WRAPPER
-            ========================== */}
             <section className="py-12 md:py-20 px-4 sm:px-6 md:px-10 lg:px-16">
                 <div className="max-w-7xl mx-auto">
-                    
-                    {/* WHAT WE ARE - Modern Presentation Card Frame Grid */}
+
                     <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-16 items-start mb-24">
                         <div className="lg:sticky lg:top-24 rounded-[2rem] p-6 sm:p-8">
                             <p className="text-sm uppercase text-[#ff383c] font-black">តើពួកយើងជានរណា?</p>
@@ -88,7 +77,6 @@ function AboutUs() {
                         </div>
                     </div>
 
-                    {/* HOW YOU CAN KNOW - Fluid Mobile Interactive Timeline Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center my-24">
                         <div className="w-full">
                             <div className="max-w-xl">
@@ -102,7 +90,6 @@ function AboutUs() {
                             </div>
                         </div>
 
-                        {/* Interactive Steps Blocks */}
                         <div className="relative pl-2 sm:pl-4">
                             <div className="absolute left-[23px] md:left-[27px] top-4 bottom-4 w-[2px] bg-slate-200" />
                             
@@ -130,7 +117,6 @@ function AboutUs() {
                         </div>
                     </div>
                             
-                    {/* Why E-ROBOT Grid Sections Grid Component */}
                     <div className="mt-24">
                         <div className="max-w-2xl mx-auto text-center mb-12">
                             <p className="text-[#192048] text-2xl md:text-4xl font-black mt-2 m-0 uppercase tracking-tight">
@@ -140,7 +126,6 @@ function AboutUs() {
                         <GridSection />
                     </div>
 
-                    {/* Folder Gallery Wrappers — Linked to the newly designed Sharing Route */}
                     <div className="w-full my-24">
                         <Folder 
                           imgSrc={Image2} 
@@ -149,7 +134,6 @@ function AboutUs() {
                         />
                     </div>
                     
-                    {/* Testimonial Feedbacks Review List Grid Component */}
                     <div className="mt-24">
                         <div className="max-w-2xl mx-auto text-center mb-12">
                             <p className="text-[#192048] text-2xl md:text-4xl font-black mt-2 m-0 uppercase tracking-tight">
@@ -159,7 +143,6 @@ function AboutUs() {
                         <GridFeedback />
                     </div>
 
-                    {/* Newsletter Subscription Container Form Component */}
                     <div className="mt-24">
                         <Subscribe />
                     </div>

@@ -22,10 +22,6 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
         no-underline
       "
     >
-
-      {/* =========================
-          Folder Body Frame (Matches Contact/Goals style standard)
-      ========================== */}
       <div
         className="
           relative
@@ -56,12 +52,8 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
           duration-300
         "
       >
-        {/* Decorative Internal Folder Accent Line */}
         <div className="absolute top-0 left-0 w-full h-[3px] bg-[#ff383c] rounded-tr-[2rem]" />
 
-        {/* =========================
-            Responsive Visual Frame Display
-        ========================== */}
         <div
           className="
             w-full
@@ -103,9 +95,6 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
           )}
         </div>
 
-        {/* =========================
-            Folder Info Content & Dynamic Routing Indicators
-        ========================== */}
         <div className="px-1 flex items-start justify-between gap-4 mt-1">
           {title && (
             <h4

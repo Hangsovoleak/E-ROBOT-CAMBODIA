@@ -69,16 +69,13 @@ const Events = () => {
                   !isEven ? 'lg:flex-row-reverse' : ''
                 }`}
               >
-                {/* Visual Content Frame Box */}
                 <div className="w-full lg:w-1/2 flex justify-center transform transition-transform duration-500 hover:scale-[1.01]">
                   <ImageFrame src={act.imgSrc} />
                 </div>
 
-                {/* Text Content Component Block */}
                 <div className="w-full lg:w-1/2">
                   <div className="rounded-[2rem] bg-white p-6 sm:p-8 md:p-10 shadow-xl border border-slate-200/80 transition-all duration-300 hover:shadow-2xl flex flex-col relative overflow-hidden">
                     
-                    {/* Decorative colored corner tag matching layout indexing */}
                     <div className={`absolute top-0 w-24 h-[4px] ${isEven ? 'left-8 bg-[#192048]' : 'right-8 bg-[#ff383c]'}`} />
 
                     <div className="flex flex-wrap items-center gap-3 mb-4">

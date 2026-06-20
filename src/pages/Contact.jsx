@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 
-import TelegramQR from "../assets/telegram_bong_kosal.png"; // Make sure to add your Telegram QR image here
+import TelegramQR from "../assets/telegram_bong_kosal.png"; 
 
 function Contact() {
   return (
     <section className="min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 md:px-10 lg:px-16">
       <div className="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[0.9fr_0.7fr] items-start">
         
-        {/* Left Section: Contact Details Card Stack */}
         <div className="space-y-8">
           <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80">
             <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048]">
@@ -51,7 +50,6 @@ function Contact() {
           </div>
         </div>
 
-        {/* Right Section: FIXED Telegram QR Code Presentation Panel */}
         <div className="rounded-[2rem] bg-[#192048] p-8 shadow-2xl text-white text-center flex flex-col items-center">
           <p className="mt-4 text-2xl sm:text-3xl font-black leading-tight max-w-sm">
             ស្កែនភ្ជាប់ទំនាក់ទំនង ឬផ្ញើសារមកកាន់យើងខ្ញុំផ្ទាល់
@@ -60,7 +58,6 @@ function Contact() {
             សូមប្រើប្រាស់កម្មវិធី Telegram ដើម្បីស្កែនដើម្បីទាក់ទង ឬសាកសួរព័ត៌មានផ្សេងៗបន្ថែម។
           </p>
 
-          {/* Centered Telegram QR Frame Card */}
           <div className="mt-8 w-64 h-64 bg-white/10 backdrop-blur-sm border border-white/15 rounded-3xl p-4 shadow-inner flex items-center justify-center overflow-hidden">
             <img 
               src={TelegramQR} 
@@ -69,7 +66,6 @@ function Contact() {
             />
           </div>
 
-          {/* Alternative Direct Link Action Button */}
           <a 
             href="https://t.me/Suy_Kosal"
             target="_blank" 
