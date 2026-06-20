@@ -282,40 +282,14 @@ function Footer() {
           </ul>
         </div>
 
-        {/* =========================
-            Right Section
-        ========================== */}
-
         <div className="flex flex-col gap-5">
-          <p
-            className="
-              text-lg
-              sm:text-xl
-              
-              font-bold
-              uppercase
-              tracking-widest
-              
-              text-white/40
-            "
-          >
+          <p className=" text-lg sm:text-xl font-bold uppercase tracking-widest text-white/40 ">
             ទំនាក់ទំនង
           </p>
 
-          <div
-            className="
-              flex
-              flex-col
-              gap-4
-              
-              text-sm
-              sm:text-base
-              
-              text-white/80
-            "
-          >
+          <div className=" flex flex-col gap-4 text-sm sm:text-base text-white/80 ">
             <div className="break-all">
-              <span>erobotkh.org</span>
+              <span>erobotteam@gmail.com</span>
             </div>
 
             <div>
@@ -325,30 +299,9 @@ function Footer() {
         </div>
       </div>
 
-      {/* =========================
-          Bottom Copyright
-      ========================== */}
-
-      <div
-        className="
-          mt-10
-          pt-6
-          
-          border-t
-          border-white/10
-          
-          text-center
-        "
-      >
-        <p
-          className="
-            text-xs
-            sm:text-sm
-            
-            text-white/50
-          "
-        >
-          E-ROBOT - អ៊ី រ៉ូបូត គឺជាអង្គការមិនរកប្រាក់ចំណេញដែលមានបេសកកម្មក្នុងការផ្តល់អប់រំផ្នែកបច្ចេកវិទ្យា និងសហគ្រិនភាពដល់កុមារកម្ពុជា។​
+      <div className=" mt-10 pt-6 border-t border-white/10 text-center">
+        <p className=" text-xs sm:text-sm  text-white/50">
+          E-ROBOT - អ៊ី រ៉ូបូត គឺជាអង្គការដែលមានបេសកកម្មក្នុងការផ្តល់នូវការអប់រំផ្នែកបច្ចេកវិទ្យា និងសហគ្រិនភាពដល់កុមារកម្ពុជា។​
         </p>
       </div>
     </footer>

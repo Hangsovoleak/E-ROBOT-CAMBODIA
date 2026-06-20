@@ -34,17 +34,7 @@ function Navbar() {
   ];
 
   const navLinkStyles = ({ isActive }) =>
-    `
-      px-4
-      py-2
-      rounded-xl
-      text-sm
-      lg:text-[0.95rem]
-      font-bold
-      transition-all
-      duration-300
-      border
-      whitespace-nowrap
+    ` px-4 py-2 rounded-xl text-sm lg:text-[0.95rem] font-semibold transition-all duration-300 border whitespace-nowrap
       ${
         isActive
           ? "text-[#FF383C] bg-[#FF383C]/10 border-[#FF383C]/20 shadow-sm"
@@ -54,10 +44,7 @@ function Navbar() {
 
   return (
     <header className="w-full sticky top-0 z-50 transition-colors duration-300 bg-white/70 dark:bg-[#161d33]/70 backdrop-blur-xl border-b border-white/20 dark:border-slate-800/40 shadow-sm">
-      
-      {/* =========================
-          Main Navbar Frame
-      ========================== */}
+    
       <nav className="w-full">
         <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
           <div className="flex items-center justify-between gap-4">
@@ -70,7 +57,6 @@ function Navbar() {
               />
             </Link>
 
-            {/* Desktop Navigation Links */}
             <ul className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center list-none m-0 p-0">
               {navItems.map((item) => (
                 <li key={item.to}>
@@ -81,11 +67,10 @@ function Navbar() {
               ))}
             </ul>
 
-            {/* Desktop Action Handles */}
             <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
                 onClick={() => handlePanelToggle('donation')}
-                className={`min-h-[2.75rem] px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 active:scale-95 cursor-pointer border-none shadow-md ${
+                className={`min-h-[2.75rem] px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 active:scale-95 cursor-pointer border-none shadow-md ${
                   activePanel === 'donation' 
                     ? "bg-slate-900 dark:bg-white text-white dark:text-[#192048]" 
                     : "bg-[#FF383C] text-white hover:bg-[#ff5256] hover:scale-[1.02]"
@@ -96,7 +81,7 @@ function Navbar() {
 
               <button
                 onClick={() => handlePanelToggle('join')}
-                className={`min-h-[2.75rem] px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 active:scale-95 cursor-pointer border-none shadow-md ${
+                className={`min-h-[2.75rem] px-5 py-2.5 rounded-full text-xs font-semibold transition-all duration-300 active:scale-95 cursor-pointer border-none shadow-md ${
                   activePanel === 'join' 
                     ? "bg-slate-900 dark:bg-white text-white dark:text-[#192048]" 
                     : "bg-[#192048] dark:bg-blue-600 text-white hover:opacity-90 hover:scale-[1.02]"
@@ -106,7 +91,6 @@ function Navbar() {
               </button>
             </div>
 
-            {/* Mobile Hamburger Icon */}
             <button
               onClick={toggleMenu}
               className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl text-[#192048] dark:text-slate-100 hover:bg-white/40 dark:hover:bg-white/5 transition-colors border-none bg-transparent cursor-pointer"
@@ -117,7 +101,6 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Flyout Menu */}
         <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
           <div className="px-4 sm:px-6 pb-5">
             <div className="bg-white/80 dark:bg-[#161d33]/80 border border-white/20 dark:border-slate-800/80 rounded-3xl shadow-xl p-4 flex flex-col gap-1.5 backdrop-blur-md">
@@ -127,7 +110,7 @@ function Navbar() {
                   to={item.to}
                   end={item.to === '/'}
                   onClick={closeMenu}
-                  className={({ isActive }) => `px-4 py-3 rounded-xl text-sm font-bold transition-all duration-300 no-underline ${isActive ? "bg-[#FF383C]/10 text-[#FF383C]" : "text-[#192048] dark:text-white/90 hover:bg-white/40 dark:hover:bg-white/5"}`}
+                  className={({ isActive }) => `px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 no-underline ${isActive ? "bg-[#FF383C]/10 text-[#FF383C]" : "text-[#192048] dark:text-white/90 hover:bg-white/40 dark:hover:bg-white/5"}`}
                 >
                   {item.label}
                 </NavLink>
@@ -143,7 +126,7 @@ function Navbar() {
                   }}
                   className="w-full min-h-[2.75rem] bg-[#FF383C] text-white text-xs font-bold py-3 rounded-xl transition-all duration-300 active:scale-95 border-none cursor-pointer shadow-sm"
                 >
-                  {activePanel === 'donation' ? "បិទផ្ទាំងបង្អួច" : "ឧបត្ថម្ភមកពួកយើង"}
+                  {activePanel === 'donation' ? "បិទ" : "ឧបត្ថម្ភមកពួកយើង"}
                 </button>
 
                 <button 
@@ -153,7 +136,7 @@ function Navbar() {
                   }}
                   className="w-full min-h-[2.75rem] bg-[#192048] dark:bg-blue-600 text-white text-xs font-bold py-3 rounded-xl transition-all duration-300 active:scale-95 border-none cursor-pointer shadow-sm"
                 >
-                  {activePanel === 'join' ? "បិទការចុះឈ្មោះ" : "ចូលរួមជាមួយពួកយើង"}
+                  {activePanel === 'join' ? "បិទ" : "ចូលរួមជាមួយពួកយើង"}
                 </button>
               </div>
             </div>
@@ -161,14 +144,10 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* =========================
-          DYNAMIC FULL GLASS ACCENT DROPDOWN PANEL
-      ========================== */}
       {activePanel && (
         <div className="absolute left-1/2 top-full -translate-x-1/2 mt-4 z-[60] w-full max-w-sm transition-all duration-300 animate-in slide-in-from-top-4 px-4">
           <div className="bg-white dark:bg-[#161d33] border border-slate-200/60 dark:border-slate-800/80 rounded-3xl p-6 shadow-2xl text-center flex flex-col items-center relative">
             
-            {/* Inline Panel Dismiss Button */}
             <button 
               onClick={() => setActivePanel(null)}
               className="absolute top-4 right-4 h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center font-bold text-sm border-none cursor-pointer hover:opacity-80 transition-opacity"
@@ -176,7 +155,6 @@ function Navbar() {
               ✕
             </button>
 
-            {/* Condition 1: Donation Active */}
             {activePanel === 'donation' && (
               <>
                 <div className="h-11 w-11 bg-red-50 dark:bg-red-500/10 text-[#FF383C] rounded-full flex items-center justify-center mb-3 mt-1">
@@ -194,7 +172,6 @@ function Navbar() {
               </>
             )}
 
-            {/* Condition 2: Join Us Active */}
             {activePanel === 'join' && (
               <>
                 <div className="h-11 w-11 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mb-3 mt-1">
