@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
 
-import TelegramQR from "../assets/qrtele.jpg"; // Make sure to add your Telegram QR image here
+import TelegramQR from "../assets/telegram_bong_kosal.png"; // Make sure to add your Telegram QR image here
 
 function Contact() {
   return (
@@ -24,7 +24,7 @@ function Contact() {
               {
                 icon: <Mail className="w-5 h-5" />,
                 title: 'អ៊ីមែល',
-                value: 'erobot@gmail.com',
+                value: 'erobotteam@gmail.com',
               },
               {
                 icon: <Phone className="w-5 h-5" />,
@@ -34,12 +34,7 @@ function Contact() {
               {
                 icon: <MapPin className="w-5 h-5" />,
                 title: 'ទីតាំង',
-                value: 'ភ្នំពេញ, ប្រទេសកម្ពុជា',
-              },
-              {
-                icon: <Send className="w-5 h-5" />,
-                title: 'រយៈពេលឆ្លើយតប',
-                value: 'ក្នុងរយះពេល ១២ ម៉ោង',
+                value: 'NA',
               },
             ].map((item) => (
               <article
@@ -62,7 +57,7 @@ function Contact() {
             ស្កែនភ្ជាប់ទំនាក់ទំនង ឬផ្ញើសារមកកាន់យើងខ្ញុំផ្ទាល់
           </p>
           <p className="mt-10 text-xs text-white/70 font-medium px-6">
-            សូមប្រើប្រាស់កម្មវិធី Telegram ដើម្បីស្កែនទាក់ទង ឬសាកសួរព័ត៌មានបន្ថែមផ្សេងៗ។
+            សូមប្រើប្រាស់កម្មវិធី Telegram ដើម្បីស្កែនដើម្បីទាក់ទង ឬសាកសួរព័ត៌មានផ្សេងៗបន្ថែម។
           </p>
 
           {/* Centered Telegram QR Frame Card */}
@@ -76,7 +71,7 @@ function Contact() {
 
           {/* Alternative Direct Link Action Button */}
           <a 
-            href="https://t.me/hangsovoleakrorn67"
+            href="https://t.me/Suy_Kosal"
             target="_blank" 
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center justify-center gap-2 w-full max-w-xs rounded-full bg-[#ff383c] py-3.5 text-sm font-bold transition hover:bg-[#ff646c] hover:scale-[1.02] active:scale-95 text-white no-underline"
