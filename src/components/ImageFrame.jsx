@@ -1,141 +1,30 @@
 import React from "react";
 
-const ImageFrame = ({ src, alt, defaultImage }) => {
+export default function ImageFrame({ src, alt, defaultImage }) {
   return (
-    <div
-      className="
-        relative
-        inline-block
+    <div className="relative inline-block w-full p-4 sm:p-6 lg:p-8 group">
+      
+      {/* Premium Ambient Background Frame (Subtle Royal Blue Shadow Accent) */}
+      <div className="absolute inset-0 m-2 sm:m-4 rounded-[24px] border border-[var(--border)] bg-gradient-to-br from-brand-blue/5 via-transparent to-brand-yellow/5 opacity-50 z-0" />
+
+      {/* Top-Left Accent Block (Royal Blue Identity Bar) */}
+      <div className="absolute top-2 sm:top-4 left-4 sm:left-6 w-16 sm:w-24 h-1.5 bg-brand-blue rounded-full z-10 transition-all duration-300 group-hover:w-20" />
+
+      {/* Bottom-Right Accent Block (Golden Yellow Highlight Bar) */}
+      <div className="absolute bottom-2 sm:bottom-4 right-4 sm:right-6 w-16 sm:w-24 h-1.5 bg-brand-yellow rounded-full z-10 transition-all duration-300 group-hover:w-20" />
+
+      {/* Elevated Image Container */}
+      <div className="relative z-20 overflow-hidden rounded-2xl shadow-md group-hover:shadow-lg border border-[var(--border)] bg-white dark:bg-[var(--surface)] transition-shadow duration-300">
         
-        w-full
+        {/* Soft layout overlay gradient */}
+        <div className="absolute inset-0 bg-brand-charcoal/5 pointer-events-none opacity-40 group-hover:opacity-0 transition-opacity duration-300 z-10" />
         
-        p-4
-        sm:p-5
-        md:p-6
-        lg:p-7
-      "
-    >
-      {/* =========================
-          Main Decorative Border
-      ========================== */}
-
-      <div
-        className="
-          absolute
-          inset-0
-          
-          m-4
-          sm:m-5
-          md:m-6
-          
-          border-[0.18rem]
-          border-[#192048]
-          
-          rounded-md
-          
-          z-0
-        "
-      />
-
-      {/* =========================
-          Top Left Decorative Bar
-      ========================== */}
-
-      <div
-        className="
-          absolute
-          
-          top-3
-          sm:top-4
-          
-          left-4
-          sm:left-5
-          md:left-6
-          
-          w-20
-          sm:w-24
-          md:w-32
-          
-          h-2
-          sm:h-3
-          
-          bg-[#192048]
-          
-          z-10
-          
-          rounded-sm
-        "
-      />
-
-      {/* =========================
-          Bottom Right Decorative Bar
-      ========================== */}
-
-      <div
-        className="
-          absolute
-          
-          bottom-3
-          sm:bottom-4
-          
-          right-4
-          sm:right-5
-          md:right-6
-          
-          w-20
-          sm:w-24
-          md:w-32
-          
-          h-2
-          sm:h-3
-          
-          bg-[#192048]
-          
-          z-10
-          
-          rounded-sm
-        "
-      />
-
-      {/* =========================
-          Image Container
-      ========================== */}
-
-      <div
-        className="
-          relative
-          z-20
-          
-          overflow-hidden
-          
-          rounded-md
-          
-          shadow-2xl
-        "
-      >
         <img
           src={src || defaultImage}
           alt={alt || "E-ROBOT Activity"}
-          className="
-            w-full
-            max-w-full
-            md:max-w-lg
-            
-            h-auto
-            
-            object-cover
-            
-            block
-            
-            transition-transform
-            duration-500
-            
-            hover:scale-105
-          "
+          className="w-full max-w-full md:max-w-lg h-auto object-cover block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
         />
       </div>
     </div>
   );
-};
-
-export default ImageFrame;
+}

@@ -1,68 +1,64 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 import TelegramQR from "../assets/telegram_bong_kosal.png"; 
 
-function Contact() {
+export default function Contact() {
+  const contactInfo = [
+    { icon: <Mail className="w-5 h-5" />, title: 'អ៊ីមែល', value: 'erobotteam@gmail.com' },
+    { icon: <Phone className="w-5 h-5" />, title: 'លេខទូរស័ព្ទ', value: '+855 10 567 014' },
+    { icon: <MapPin className="w-5 h-5" />, title: 'ទីតាំង', value: 'ភ្នំពេញ, កម្ពុជា' }, // Replaced 'NA' with professional local fallback
+  ];
+
   return (
-    <section className="min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 md:px-10 lg:px-16">
-      <div className="max-w-7xl mx-auto grid gap-12 lg:grid-cols-[0.9fr_0.7fr] items-start">
+    <section className="min-h-screen bg-[var(--bg)] py-12 lg:py-16 px-4 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto grid gap-8 lg:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
         
-        <div className="space-y-8">
-          <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80">
-            <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048]">
+        {/* Left Column: Information Header & Information Cards */}
+        <div className="space-y-6 md:space-y-8">
+          <div className="rounded-2xl bg-white dark:bg-[var(--surface)] p-6 sm:p-8 shadow-sm border border-[var(--border)]">
+            <h1 className="text-3xl sm:text-4xl font-sans font-bold tracking-tight text-brand-charcoal dark:text-white m-0">
               ទាក់ទងមកកាន់ក្រុមការងារ E-ROBOT
-            </p>
-            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-2xl">
+            </h1>
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-[var(--text)]/70 max-w-2xl font-sans font-medium">
               យើងរីករាយនៅក្នុងការជួយអ្នកទាំងអស់គ្នា។ សូមស្កែន QR Code ឬទាក់ទងតាមរយៈព័ត៌មានខាងក្រោម ហើយយើងនឹងតបទៅកាន់អ្នកក្នុងពេលឆាប់ៗនេះ។
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              {
-                icon: <Mail className="w-5 h-5" />,
-                title: 'អ៊ីមែល',
-                value: 'erobotteam@gmail.com',
-              },
-              {
-                icon: <Phone className="w-5 h-5" />,
-                title: 'លេខទូរស័ព្ទ',
-                value: '+855 10 567 014',
-              },
-              {
-                icon: <MapPin className="w-5 h-5" />,
-                title: 'ទីតាំង',
-                value: 'NA',
-              },
-            ].map((item) => (
+          <div className="grid gap-4 sm:grid-cols-3">
+            {contactInfo.map((item) => (
               <article
                 key={item.title}
-                className="rounded-[1.75rem] bg-white p-6 shadow-lg border border-slate-200/80 hover:-translate-y-1 transition-transform duration-300"
+                className="group rounded-2xl bg-white dark:bg-[var(--surface)] p-5 shadow-sm border border-[var(--border)] hover:-translate-y-1 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-3xl bg-[#ff383c]/10 text-[#ff383c] mb-4">
+                <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-brand-blue/10 text-brand-blue mb-4 transition-colors group-hover:bg-brand-blue group-hover:text-white shadow-inner">
                   {item.icon}
                 </div>
-                <p className="text-xs uppercase text-slate-400">{item.title}</p>
-                <p className="mt-3 text-base font-semibold text-slate-800">{item.value}</p>
+                <span className="text-xs uppercase text-[var(--text)]/50 font-sans font-bold tracking-wider">{item.title}</span>
+                <p className="mt-2 text-sm sm:text-base font-sans font-semibold text-brand-charcoal dark:text-[var(--text-h)] truncate m-0">{item.value}</p>
               </article>
             ))}
           </div>
         </div>
 
-        <div className="rounded-[2rem] bg-[#192048] p-8 shadow-2xl text-white text-center flex flex-col items-center">
-          <p className="mt-4 text-2xl sm:text-3xl font-black leading-tight max-w-sm">
+        {/* Right Column: Premium Telegram Scan Card */}
+        <div className="rounded-2xl bg-white dark:bg-[var(--surface)] p-6 sm:p-8 shadow-sm border border-[var(--border)] text-center flex flex-col items-center relative overflow-hidden group">
+          {/* Subtle brand dynamic glowing accent */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
+
+          <h2 className="text-xl sm:text-2xl font-sans font-bold text-brand-charcoal dark:text-white leading-tight max-w-xs m-0">
             ស្កែនភ្ជាប់ទំនាក់ទំនង ឬផ្ញើសារមកកាន់យើងខ្ញុំផ្ទាល់
-          </p>
-          <p className="mt-10 text-xs text-white/70 font-medium px-6">
+          </h2>
+          <p className="mt-3 text-xs font-sans font-medium text-[var(--text)]/60 px-4 leading-relaxed">
             សូមប្រើប្រាស់កម្មវិធី Telegram ដើម្បីស្កែនដើម្បីទាក់ទង ឬសាកសួរព័ត៌មានផ្សេងៗបន្ថែម។
           </p>
 
-          <div className="mt-8 w-64 h-64 bg-white/10 backdrop-blur-sm border border-white/15 rounded-3xl p-4 shadow-inner flex items-center justify-center overflow-hidden">
+          {/* QR Display Frame */}
+          <div className="mt-6 w-52 h-52 bg-[var(--bg)] border border-[var(--border)] rounded-xl p-3 shadow-inner flex items-center justify-center overflow-hidden transition-colors duration-300 group-hover:border-brand-blue/20">
             <img 
               src={TelegramQR} 
-              alt="E-Robot Telegram Support Account QR Code" 
-              className="w-full h-full object-contain rounded-2xl bg-white p-2"
+              alt="E-Robot Telegram Support QR" 
+              className="w-full h-full object-contain rounded-lg bg-white p-1"
             />
           </div>
 
@@ -70,9 +66,9 @@ function Contact() {
             href="https://t.me/Suy_Kosal"
             target="_blank" 
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center justify-center gap-2 w-full max-w-xs rounded-full bg-[#ff383c] py-3.5 text-sm font-bold transition hover:bg-[#ff646c] hover:scale-[1.02] active:scale-95 text-white no-underline"
+            className="mt-6 inline-flex items-center justify-center gap-2 w-full max-w-xs rounded-full bg-brand-blue text-white text-sm font-bold font-sans py-3.5 border-none transition-all duration-300 hover:opacity-95 hover:-translate-y-0.5 shadow-sm no-underline cursor-pointer"
           >
-            <MessageCircle className="w-5 h-5 fill-current" />
+            <MessageCircle className="w-4 h-4 fill-current" />
             បើកកម្មវិធី Telegram
           </a>
         </div>
@@ -81,5 +77,3 @@ function Contact() {
     </section>
   );
 }
-
-export default Contact;

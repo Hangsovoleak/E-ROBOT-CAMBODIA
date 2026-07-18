@@ -31,7 +31,7 @@ const Events = () => {
     {
       title: "សាលាចំណេះដឹងទូទៅបុរីវិជ្ជា",
       year: "២០២២​​​~២០២៣",
-      description: "យើងបានរៀបចំំវគ្គសិក្សាជាច្រើន ជាមួយសាលាចំណេះដឹងទូទៅបុរីវិជ្ជា នៅក្នុងក្រុងកំពុងឆ្នាំង។ ក្នុងនោះមានទាំងការតាំងបញ្ហាស្នាដៃ និងការចែករំលែកបន្តពីសិស្សនៅទីនោះ។ យើងសម្រេចបានការបណ្ដុះបណ្ដាលសិស្សជាង ១៥០ នាក់ ជាមួយនឹងការតាំងបង្ហាញស្នាដៃជាច្រើនដង។ ហើយគម្រោងនេះគឺជាថវិកាពីសាលាផ្ទាល់",
+      description: "យើងបានរៀបចំវគ្គសិក្សាជាច្រើន ជាមួយសាលាចំណេះដឹងទូទៅបុរីវិជ្ជា នៅក្នុងក្រុងកំពុងឆ្នាំង។ ក្នុងនោះមានទាំងការតាំងបញ្ហាស្នាដៃ និងការចែករំលែកបន្តពីសិស្សនៅទីនោះ។ យើងសម្រេចបានការបណ្ដុះបណ្ដាលសិស្សជាង ១៥០ នាក់ ជាមួយនឹងការតាំងបង្ហាញស្នាដៃជាច្រើនដង។ ហើយគម្រោងនេះគឺជាថវិកាពីសាលាផ្ទាល់",
       imgSrc: g3
     },
     {
@@ -52,16 +52,21 @@ const Events = () => {
     <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f8fafc] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
+        {/* Header section */}
         <div className="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80 text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
-          <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
+          <h2 className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0 leading-snug">
             សកម្មភាពរបស់ <span className="text-[#ff383c]">E-ROBOT</span>
-          </p>
+          </h2>
         </div>
 
+        {/* List of activities */}
         <div className="space-y-16 md:space-y-24">
           {activities.map((act, index) => {
             const isEven = index % 2 === 0;
+            // Pad index with leading zero dynamically safely
+            const displayIndex = (index + 1).toString().padStart(2, '0');
+
             return (
               <div 
                 key={index} 
@@ -69,31 +74,34 @@ const Events = () => {
                   !isEven ? 'lg:flex-row-reverse' : ''
                 }`}
               >
+                {/* Image panel */}
                 <div className="w-full lg:w-1/2 flex justify-center transform transition-transform duration-500 hover:scale-[1.01]">
                   <ImageFrame src={act.imgSrc} />
                 </div>
 
+                {/* Content description panel */}
                 <div className="w-full lg:w-1/2">
                   <div className="rounded-[2rem] bg-white p-6 sm:p-8 md:p-10 shadow-xl border border-slate-200/80 transition-all duration-300 hover:shadow-2xl flex flex-col relative overflow-hidden">
                     
                     <div className={`absolute top-0 w-24 h-[4px] ${isEven ? 'left-8 bg-[#192048]' : 'right-8 bg-[#ff383c]'}`} />
 
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span className="px-3 py-1 bg-[#ff383c]/10 text-[#ff383c] rounded-full text-xs font-bold uppercase tracking-wider">
-                        សកម្មភាពទី ០{index + 1}
+                      <span className="px-3 py-1 bg-[#ff383c]/10 text-[#ff383c] rounded-full text-xs font-bold tracking-wider">
+                        សកម្មភាពទី {displayIndex}
                       </span>
-                      <span className="text-xs font-bold text-slate-400 dark:text-slate-500 tracking-wide">
+                      <span className="text-xs font-bold text-slate-400 tracking-wide">
                         {act.year}
                       </span>
                     </div>
 
-                    <p className="text-2xl sm:text-3xl font-black text-[#192048] m-0 leading-tight">
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#192048] m-0 leading-snug">
                       {act.title}
-                    </p>
+                    </h3>
 
                     <div className="w-16 h-[2px] bg-slate-200 my-5" />
 
-                    <p className="text-sm sm:text-base leading-relaxed text-slate-600 font-medium m-0">
+                    {/* Adjusted line height here to leading-loose for better Khmer typography layout */}
+                    <p className="text-sm sm:text-base leading-loose text-slate-600 font-medium m-0">
                       {act.description}
                     </p>
                   </div>

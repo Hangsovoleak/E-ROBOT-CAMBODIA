@@ -1,8 +1,9 @@
+import React from "react";
 import meet from "../assets/meet.png";
 import money from "../assets/money.png";
 import volunteer from "../assets/volunteering.png";
 
-const GridGoals = () => {
+export default function GridGoals() {
   const cardData = [
     {
       image: meet,
@@ -19,162 +20,39 @@ const GridGoals = () => {
   ];
 
   return (
-    <section
-      className="
-        w-full
-        
-        bg-white
-        
-        px-4
-        sm:px-6
-        md:px-8
-        lg:px-10
-        
-        py-8
-        md:py-12
-        
-        mb-12
-        md:mb-16
-      "
-    >
-      {/* =========================
-          Responsive Grid
-      ========================== */}
-
-      <div
-        className="
-          max-w-7xl
-          mx-auto
-          
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-3
-          
-          gap-5
-          md:gap-6
-        "
-      >
+    <section className="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
         {cardData.map((item, index) => (
           <div
             key={index}
-            className="
-              group
-              
-              bg-[#1e2342]
-              
-              rounded-2xl
-              
-              shadow-lg
-              
-              transition-all
-              duration-300
-              
-              hover:-translate-y-1
-              hover:shadow-2xl
-              
-              active:scale-95
-              
-              overflow-hidden
-            "
+            className="group relative bg-white dark:bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 overflow-hidden"
           >
-            {/* =========================
-                Card Content
-                Mobile: Column
-                Desktop: Row
-            ========================== */}
+            {/* Minimal left border accent line on hover */}
+            <div className="absolute left-0 inset-y-0 w-[3px] bg-brand-blue/0 group-hover:bg-brand-blue transition-colors duration-300" />
 
-            <div
-              className="
-                flex
-                flex-col
-                sm:flex-row
-                
-                items-center
-                justify-between
-                
-                gap-5
-                
-                p-5
-                sm:p-6
-                md:p-7
-                
-                min-h-[14rem]
-              "
-            >
-              {/* =========================
-                  Text Section
-              ========================== */}
-
-              <div
-                className="
-                  flex-1
-                  
-                  text-center
-                  sm:text-left
-                "
-              >
-                <p
-                  className="
-                    text-white
-                    
-                    text-base
-                    sm:text-lg
-                    md:text-xl
-                    
-                    font-bold
-                    
-                    leading-relaxed
-                  "
-                >
+            {/* Layout Box */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 min-h-[11rem]">
+              
+              {/* Text Description */}
+              <div className="flex-1 text-center sm:text-left min-w-0">
+                <p className="font-sans font-bold text-base sm:text-lg text-brand-charcoal dark:text-[var(--text-h)] leading-relaxed group-hover:text-brand-blue transition-colors duration-200">
                   {item.desc}
                 </p>
               </div>
 
-              {/* =========================
-                  Image Section
-              ========================== */}
-
-              <div
-                className="
-                  flex
-                  justify-center
-                  items-center
-                  
-                  w-full
-                  sm:w-auto
-                  
-                  shrink-0
-                "
-              >
+              {/* Graphic Asset Wrapper */}
+              <div className="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-[var(--bg)] dark:bg-brand-charcoal/20 rounded-xl p-3 border border-[var(--border)] transition-colors duration-300 group-hover:border-brand-blue/20 shadow-inner">
                 <img
                   src={item.image}
-                  alt="goal icon"
-                  className="
-                    w-24
-                    h-24
-                    
-                    sm:w-28
-                    sm:h-28
-                    
-                    md:w-32
-                    md:h-32
-                    
-                    object-contain
-                    
-                    transition-transform
-                    duration-300
-                    
-                    group-hover:scale-105
-                  "
+                  alt="Goal asset vector"
+                  className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
+              
             </div>
           </div>
         ))}
       </div>
     </section>
   );
-};
-
-export default GridGoals;
+}

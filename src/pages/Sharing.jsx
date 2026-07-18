@@ -27,7 +27,7 @@ const Sharing = () => {
         <div className="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80 text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
           <p className="text-sm uppercase text-[#ff383c] font-black">បណ្ណាល័យចំណែករំលែក</p>
-          <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048] m-0">
+          <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048]">
             មាតិកាផ្សេងៗរបស់ <span className="text-[#ff383c]">E-ROBOT</span>
           </p>
         </div>
@@ -42,7 +42,7 @@ const Sharing = () => {
               href={card.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative w-full block group cursor-pointer min-h-[10rem] transition-all duration-300 hover:-translate-y-2 no-underline"
+              className="relative w-full block group cursor-pointer transition-all duration-300 hover:-translate-y-2 no-underline"
             >
 
               {/* Folder Frame Layout Card */}
@@ -76,10 +76,10 @@ const Sharing = () => {
                 {/* Text Content Info Description Segment */}
                 <div className="px-1 flex items-center justify-between gap-4 mt-1">
                   <div className="flex-1">
-                    <h4 className="text-[#192048] text-lg font-black leading-snug m-0 break-words line-clamp-1">
+                    <h4 className="text-[#192048] text-lg font-black leading-snug break-words line-clamp-2">
                       {card.title || "មាតិកាថ្មីៗពីយើងខ្ញុំ"}
                     </h4>
-                    <p className="text-slate-400 font-bold text-[11px] uppercase tracking-wider mt-1 m-0">
+                    <p className="text-slate-400 font-bold text-[11px] uppercase tracking-wider mt-1">
                       ចុចដើម្បីអានអត្ថបទលម្អិត
                     </p>
                   </div>
