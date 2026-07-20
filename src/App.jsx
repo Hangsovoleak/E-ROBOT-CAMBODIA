@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -8,21 +9,30 @@ import Events from './pages/Events';
 import Sharings from './pages/Sharing';
 import Contact from './pages/Contact';
 
-// 2. Import your Tailwind CSS file
 import './index.css';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen bg-white/95 w-full flex flex-col font-kantumruy">
-      {/* Navbar stays at the top of every page */}
+    /* CHANGED: Swapped bg-white/95 out for bg-slate-50 to give a premium, muted background tint */
+    <div className="min-h-screen bg-slate-50 w-full flex flex-col font-kantumruy antialiased selection:bg-[#ff383c]/10 selection:text-[#ff383c]">
+      <ScrollToTop />
       <Navbar />
 
-      {/* This main tag ensures content expands to push footer down */}
-      <main className="flex-grow">
-        <div key={location.pathname} className="page-transition">
-          <Routes>
+      <main className="flex-grow flex flex-col w-full relative">
+        <article key={location.pathname} className="page-transition flex-grow flex flex-col w-full">
+          <Routes location={location}>
             <Route path="/" element={<AboutUs />} />
             <Route path="/home" element={<AboutUs />} />
             <Route path="/about" element={<Goals />} />
@@ -31,10 +41,9 @@ function App() {
             <Route path="/sharings" element={<Sharings />} />
             <Route path="*" element={<AboutUs />} />
           </Routes>
-        </div>
+        </article>
       </main>
 
-      {/* Footer stays at the bottom of every page */}
       <Footer />
     </div>
   );

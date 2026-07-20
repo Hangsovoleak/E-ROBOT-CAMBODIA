@@ -5,7 +5,7 @@ import s2 from '../assets/s2.png';
 import s3 from '../assets/s3.png';
 import s4 from '../assets/s4.png';
 import s5 from '../assets/s5.png';
-import s6 from '../assets/s7.jpg';
+import s6 from '../assets/s6.png';
 
 const Sharing = () => {
   const cards = [
@@ -18,16 +18,17 @@ const Sharing = () => {
   ];
 
   return (
-    <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#f8fafc] overflow-hidden">
+    // Replaced layout background with target dark hex token #191923
+    <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#191923] text-slate-100 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* =========================
-            HEADER TITLE BANNER CARD
+            HEADER TITLE BANNER CARD (Dark Glass Model)
         ========================== */}
-        <div className="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80 text-center mb-24 relative">
+        <div className="max-w-2xl mx-auto rounded-[2rem] bg-white/[0.03] backdrop-blur-xl p-8 shadow-2xl border border-white/10 text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
-          <p className="text-sm uppercase text-[#ff383c] font-black">បណ្ណាល័យចំណែករំលែក</p>
-          <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048]">
+          <p className="text-sm uppercase text-[#ff383c] font-black tracking-wider">បណ្ណាល័យចែករំលែក</p>
+          <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-white">
             មាតិកាផ្សេងៗរបស់ <span className="text-[#ff383c]">E-ROBOT</span>
           </p>
         </div>
@@ -45,28 +46,28 @@ const Sharing = () => {
               className="relative w-full block group cursor-pointer transition-all duration-300 hover:-translate-y-2 no-underline"
             >
 
-              {/* Folder Frame Layout Card */}
-              <div className="relative w-full bg-white rounded-b-[2rem] rounded-tr-[2rem] shadow-xl group-hover:shadow-2xl p-4 border border-slate-200/80 overflow-hidden transition-all duration-300 flex flex-col gap-4">
+              {/* Folder Frame Layout Card in Dark Glassmorphism */}
+              <div className="relative w-full bg-white/[0.03] backdrop-blur-xl rounded-b-[2rem] rounded-tr-[2rem] rounded-tl-md shadow-2xl group-hover:bg-white/[0.06] p-4 border border-white/10 overflow-hidden transition-all duration-300 flex flex-col gap-4">
                 
                 {/* Brand Indicator Line top */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-[#ff383c] rounded-tr-[2rem]" />
 
                 {/* Content Graphic Element Frame */}
-                <div className="w-full h-64 overflow-hidden rounded-2xl bg-slate-100 border border-slate-100 relative shadow-inner">
+                <div className="w-full h-64 overflow-hidden rounded-2xl bg-white/[0.02] border border-white/5 relative shadow-inner">
                   <img 
                     src={card.img} 
                     alt={card.title} 
                     className="w-full h-full object-cover object-center block transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   
-                  {/* Subtle Interactive Friendly Floating Tag */}
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-md text-[#192048] text-[11px] font-bold rounded-full shadow-sm">
+                  {/* Floating Tag styled to dark aesthetic */}
+                  <div className="absolute top-3 left-3 px-3 py-1 bg-[#191923]/90 backdrop-blur-md text-white border border-white/10 text-[11px] font-bold rounded-full shadow-sm">
                     {card.category}
                   </div>
 
                   {/* Absolute Interactive Inner Hover Mask */}
-                  <div className="absolute inset-0 bg-[#192048]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <div className="bg-white/90 px-4 py-2 rounded-full flex items-center gap-1.5 shadow-xl text-[#192048] text-xs font-bold transition-transform duration-300 scale-90 group-hover:scale-100">
+                  <div className="absolute inset-0 bg-[#191923]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="bg-white px-4 py-2 rounded-full flex items-center gap-1.5 shadow-2xl text-[#191923] text-xs font-bold transition-transform duration-300 scale-90 group-hover:scale-100">
                       <Share2 className="w-3.5 h-3.5 text-[#ff383c]" />
                       អានអត្ថបទពេញនៅលើ Facebook
                     </div>
@@ -75,17 +76,20 @@ const Sharing = () => {
 
                 {/* Text Content Info Description Segment */}
                 <div className="px-1 flex items-center justify-between gap-4 mt-1">
-                  <div className="flex-1">
-                    <h4 className="text-[#192048] text-lg font-black leading-snug break-words line-clamp-2">
-                      {card.title || "មាតិកាថ្មីៗពីយើងខ្ញុំ"}
-                    </h4>
+                  <div className="flex-1 min-w-0">
+                    {/* Fixed height space prevents layout shift */}
+                    <div className="h-12 flex items-center">
+                      <h4 className="text-white text-lg font-black leading-snug break-words line-clamp-2 w-full transition-colors duration-200 group-hover:text-[#ff383c]">
+                        {card.title || "មាតិកាថ្មីៗពីយើងខ្ញុំ"}
+                      </h4>
+                    </div>
                     <p className="text-slate-400 font-bold text-[11px] uppercase tracking-wider mt-1">
                       ចុចដើម្បីអានអត្ថបទលម្អិត
                     </p>
                   </div>
 
-                  {/* Micro-animated directional round action badge */}
-                  <div className="w-10 h-10 rounded-full bg-[#ff383c]/10 text-[#ff383c] group-hover:bg-[#ff383c] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm">
+                  {/* Micro-animated directional round action badge linked to system palette */}
+                  <div className="w-10 h-10 rounded-full bg-[#ff383c]/10 text-[#ff383c] group-hover:bg-[#ff383c] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-md">
                     <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:rotate-45" />
                   </div>
                 </div>

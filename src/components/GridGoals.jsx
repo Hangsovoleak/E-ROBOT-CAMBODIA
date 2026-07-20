@@ -3,54 +3,117 @@ import meet from "../assets/meet.png";
 import money from "../assets/money.png";
 import volunteer from "../assets/volunteering.png";
 
+const cardData = [
+  {
+    image: meet,
+    desc: "សិក្សាឥតគិតថ្លៃ តាមរយះអនឡាញ Google Meet",
+  },
+  {
+    image: money,
+    desc: "ទទួលបានសម្ភារះសិក្សាពីសប្បុរសជន",
+  },
+  {
+    image: volunteer,
+    desc: "ទទួលបានការបណ្ដុះបណ្ដាលពីយុវជន ស្ម័គ្រចិត្តដែលមានជំនាញ",
+  },
+];
+
 export default function GridGoals() {
-  const cardData = [
-    {
-      image: meet,
-      desc: "សិក្សាឥតគិតថ្លៃ តាមរយះអនឡាញ Google Meet",
-    },
-    {
-      image: money,
-      desc: "ទទួលបានសម្ភារះសិក្សាពីសប្បុរសជន",
-    },
-    {
-      image: volunteer,
-      desc: "ទទួលបានការបណ្ដុះបណ្ដាលពីយុវជន ស្ម័គ្រចិត្តដែលមានជំនាញ",
-    },
-  ];
-
   return (
-    <section className="w-full px-4 sm:px-8 lg:px-12 py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+    // Integrated your unified global section class
+    <section className="section">
+      {/* Integrated your unified global container class */}
+      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {cardData.map((item, index) => (
-          <div
+          <article
             key={index}
-            className="group relative bg-white dark:bg-[var(--surface)] rounded-2xl border border-[var(--border)] shadow-sm hover:shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 overflow-hidden"
+            className="
+              group
+              relative
+              overflow-hidden
+              rounded-3xl
+              border
+              border-[var(--border-light)]
+              bg-[var(--surface)]
+              p-8
+              transition-all
+              duration-300
+              hover:-translate-y-2
+              hover:border-primary/40
+              hover:shadow-xl
+              flex
+              flex-col
+              justify-between
+              gap-6
+            "
           >
-            {/* Minimal left border accent line on hover */}
-            <div className="absolute left-0 inset-y-0 w-[3px] bg-brand-blue/0 group-hover:bg-brand-blue transition-colors duration-300" />
+            {/* Top accent line matching your card layout choice */}
+            <div
+              className="
+                absolute
+                left-0
+                top-0
+                h-1
+                w-0
+                bg-primary
+                transition-all
+                duration-500
+                group-hover:w-full
+              "
+            />
 
-            {/* Layout Box */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 sm:p-8 min-h-[11rem]">
+            {/* Content Layout Inner Box */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6 w-full">
               
-              {/* Text Description */}
-              <div className="flex-1 text-center sm:text-left min-w-0">
-                <p className="font-sans font-bold text-base sm:text-lg text-brand-charcoal dark:text-[var(--text-h)] leading-relaxed group-hover:text-brand-blue transition-colors duration-200">
+              {/* Text Description - Inherits core text tokens and highlights primary on hover */}
+              <div className="flex-1 text-center sm:text-left min-w-0 order-2 sm:order-1">
+                <p 
+                  className="
+                    font-bold 
+                    text-base 
+                    sm:text-lg 
+                    text-[var(--text-heading)] 
+                    leading-relaxed 
+                    transition-colors 
+                    duration-300 
+                    group-hover:text-primary
+                  "
+                >
                   {item.desc}
                 </p>
               </div>
 
-              {/* Graphic Asset Wrapper */}
-              <div className="flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-[var(--bg)] dark:bg-brand-charcoal/20 rounded-xl p-3 border border-[var(--border)] transition-colors duration-300 group-hover:border-brand-blue/20 shadow-inner">
+              {/* Graphic Asset Container */}
+              <div 
+                className="
+                  flex 
+                  items-center 
+                  justify-center 
+                  w-24 
+                  h-24 
+                  shrink-0 
+                  bg-[var(--surface-light)] 
+                  rounded-2xl 
+                  p-4 
+                  border 
+                  border-[var(--border-light)] 
+                  transition-all 
+                  duration-300 
+                  group-hover:border-primary/30 
+                  shadow-inner
+                  order-1
+                  sm:order-2
+                "
+              >
                 <img
                   src={item.image}
-                  alt="Goal asset vector"
+                  alt="Goal illustration"
                   className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </div>
               
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

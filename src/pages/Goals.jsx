@@ -1,12 +1,12 @@
 import { Dice1, Dice2, Dice3, Dice4 } from 'lucide-react';
 import sticker from '../assets/erobotsticker.png';
 import GridGoals from '../components/GridGoals';
-import ImageGoal from '../components/ImageGoals'; // Unified name variant based on usage
+import ImageGoal from '../components/ImageGoals'; 
 
 const CARD_DATA = [
   {
     id: 1,
-    title: "ផ្តល់ឱកាសឱ្យកុមារកម្ពុជាបានសិក្សា និងស្វែងយល់កាន់តែស៊ីជម្រៅអំពីបច្គេកវិទ្យា",
+    title: "ផ្តល់ឱកាសឱ្យកុមារកម្ពុជាបានសិក្សា និងស្វែងយល់កាន់តែស៊ីជម្រៅអំពីបច្ចេកវិទ្យា",
     icon: Dice1
   },
   {
@@ -28,41 +28,43 @@ const CARD_DATA = [
 
 function Goals() {
   return (
-    <div className="min-h-screen bg-[#f8fafc] py-16 px-4 sm:px-6 md:px-10 lg:px-16 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto space-y-24">
+    // Replaced layout background with target dark hex token #191923
+    <section className="section min-h-screen bg-[#191923] py-16 text-slate-100">
+      <div className="container max-w-7xl mx-auto px-4 space-y-16 md:space-y-24">
         
-        {/* Goals Section */}
-        <section aria-labelledby="goals-heading" className="grid gap-12 lg:grid-cols-[0.9fr_0.7fr] items-start">
+        {/* Goals Main Row Layout */}
+        <div aria-labelledby="goals-heading" className="grid gap-8 lg:gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
           
-          <div className="space-y-8">
-            {/* Header Description Card */}
-            <div className="rounded-[2rem] bg-white p-8 shadow-2xl border border-slate-200/80">
-              <p className="text-sm uppercase tracking-wider font-semibold text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</p>
-              <h1 id="goals-heading" className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-[#192048]">
+          <div className="space-y-6 md:space-y-8">
+            {/* Header Description Glass Card */}
+            <div className="rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10">
+              <span className="text-xs uppercase tracking-wider font-bold text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</span>
+              <h1 id="goals-heading" className="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white m-0">
                 គោលដៅរបស់ E-ROBOT
               </h1>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-300 font-medium">
                 យើងប្ដេជ្ញាចិត្តខ្ពស់ក្នុងការជម្រុញការយល់ដឹង បណ្តុះបណ្តាលចំណេះដឹង និងបង្កើតឱកាសថ្មីៗនៅក្នុងវិស័យបច្ចេកវិទ្យាជូនដល់យុវជនជំនាន់ក្រោយនៅកម្ពុជា។
               </p>
             </div>
 
-            {/* Grid List Elements */}
+            {/* Grid List Elements with Glass Properties */}
             <div className="grid gap-4 sm:grid-cols-2">
               {CARD_DATA.map((item) => {
                 const IconComponent = item.icon;
                 return (
                   <article
                     key={item.id}
-                    className="rounded-[1.75rem] bg-white p-6 shadow-lg border border-slate-200/80 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between"
+                    className="group rounded-2xl bg-white/[0.03] backdrop-blur-xl p-5 shadow-lg border border-white/10 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
-                      <div className="flex items-center justify-center w-12 h-12 rounded-3xl bg-[#ff383c]/10 text-[#ff383c] mb-4">
+                      {/* Icon wrapper styling matched with #ff383c */}
+                      <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#ff383c]/10 text-[#ff383c] mb-4 transition-all duration-300 group-hover:bg-[#ff383c] group-hover:text-white shadow-md">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <span className="text-xs uppercase text-slate-400 font-bold block">
+                      <span className="text-xs uppercase text-slate-400 font-bold block tracking-wider">
                         ជំហានទី ០{item.id}
                       </span>
-                      <p className="mt-3 text-base font-bold text-slate-800 leading-relaxed">
+                      <p className="mt-2.5 text-sm sm:text-base font-semibold text-white leading-relaxed m-0">
                         {item.title}
                       </p>
                     </div>
@@ -72,44 +74,49 @@ function Goals() {
             </div>
           </div>
 
-          {/* Graphic Side Panel Banner */}
-          <div className="rounded-[2rem] bg-[#192048] p-8 shadow-2xl text-white text-center flex flex-col items-center justify-center min-h-[460px]">
-            <p className="text-sm uppercase tracking-wider font-semibold text-[#ffcbc5]">ការច្នៃប្រឌិត & ការអភិវឌ្ឍ</p>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-black leading-tight max-w-sm">
+          {/* Graphic Side Panel Banner transformed into Dark Accent Card */}
+          <div className="rounded-3xl bg-white/[0.02] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-white text-center flex flex-col items-center justify-center min-h-[440px] relative overflow-hidden group">
+            {/* Soft background brand ambient lighting element */}
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff383c]/5 rounded-full blur-3xl pointer-events-none" />
+            
+            <span className="text-xs uppercase tracking-wider font-bold text-[#ff383c]">ការច្នៃប្រឌិត & ការអភិវឌ្ឍ</span>
+            <h2 className="mt-3 text-xl sm:text-2xl font-bold leading-tight max-w-xs m-0">
               រួមគ្នាបង្កើតអនាគតឌីជីថលដ៏ភ្លឺស្វាងសម្រាប់កុមារគ្រប់រូប
             </h2>
             
-            <div className="mt-8 w-full max-w-xs flex justify-center items-center p-4 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 shadow-inner">
+            {/* Visual Frame wrapper matching the application theme */}
+            <div className="mt-6 w-full max-w-xs flex justify-center items-center p-4 rounded-2xl bg-white/[0.02] border border-white/10 shadow-inner overflow-hidden transition-colors duration-300 group-hover:border-[#ff383c]/20">
               <img 
                 alt="E-Robot Goals Illustration Sticker Mascot"
                 src={sticker}
-                className="w-full h-auto max-h-64 object-contain filter drop-shadow-2xl"
+                className="w-full h-auto max-h-56 object-contain filter drop-shadow-2xl transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
 
-        </section>
+        </div>
 
-        {/* Dynamic Inner Component Grid */}
+        {/* Dynamic Inner Grid Component Container */}
         <div>
           <GridGoals />
         </div>
 
-        {/* Vision Component Wrapper */}
-        <section aria-labelledby="vision-heading" className="space-y-8">
-          <div className="max-w-3xl mx-auto rounded-[2rem] bg-white p-8 shadow-xl border border-slate-200/80 text-center">
-            <h2 id="vision-heading" className="text-3xl sm:text-4xl font-black text-[#192048]">
+        {/* Vision Component Wrapper with Dark Glass Panels */}
+        <div aria-labelledby="vision-heading" className="space-y-6 md:space-y-8">
+          <div className="max-w-2xl mx-auto rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-center relative">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
+            <h2 id="vision-heading" className="mt-4 text-2xl sm:text-3xl font-bold text-white m-0">
               ចក្ខុវិស័យរបស់ E-ROBOT
             </h2>
           </div>
           
-          <div className="rounded-[2rem] overflow-hidden bg-white shadow-2xl border border-slate-200/80 p-4 sm:p-6 md:p-8">
+          <div className="rounded-3xl overflow-hidden bg-white/[0.03] backdrop-blur-xl shadow-2xl border border-white/10 p-4 sm:p-6 md:p-8">
             <ImageGoal />
           </div>
-        </section>
+        </div>
 
       </div>
-    </div>
+    </section>
   );
 }
 

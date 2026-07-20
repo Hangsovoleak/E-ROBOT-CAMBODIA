@@ -1,150 +1,474 @@
 @import "tailwindcss";
 
-/* 1. Font Integration */
+/* ===========================================================
+   Fonts
+=========================================================== */
+
 @import "@fontsource/kantumruy-pro/400.css";
 @import "@fontsource/kantumruy-pro/500.css";
+@import "@fontsource/kantumruy-pro/600.css";
 @import "@fontsource/kantumruy-pro/700.css";
 
-/* 2. Tailwind v4 Theme Configuration */
+/* ===========================================================
+   Tailwind Theme
+=========================================================== */
+
 @theme {
   --font-kantumruy: "Kantumruy Pro", sans-serif;
-  
-  /* Setting Kantumruy Pro as the default sans-serif across the app */
   --font-sans: "Kantumruy Pro", sans-serif;
-  
-  /* Injecting the premium brand palette tokens directly into Tailwind classes */
-  --color-brand-blue: #3E5B99;
-  --color-brand-red: #B5333B;
-  --color-brand-yellow: #F4C24D;
-  --color-brand-warm-white: #F4F0E4;
-  --color-brand-charcoal: #333333;
+
+  --color-primary: #0E79B2;
+  --color-dark: #191923;
+  --color-light: #FBFEF9;
+
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
 }
 
-/* 3. Global CSS Variables & Token Mapping */
+/* ===========================================================
+   Global Design Tokens
+=========================================================== */
+
 :root {
-  /* Layout Colors based on the requested premium palette */
-  --bg: #F4F0E4;               /* Warm White as base background */
-  --surface: #FFFFFF;          /* Pure White for pristine cards */
-  --text-h: #333333;           /* Dark Charcoal for headings */
-  --text: #555555;             /* Soft Charcoal for legible body copy */
-  --border: rgba(51, 51, 51, 0.08); /* Sophisticated, soft borders */
-  
-  /* Brand/Interactive Tokens */
-  --accent-blue: #3E5B99;      /* Royal Blue for primary interactive points */
-  --accent-blue-bg: rgba(62, 91, 153, 0.08);
-  --accent-yellow: #F4C24D;    /* Golden Yellow for alerts/highlights */
-  --accent-red: #B5333B;       /* Deep Red for errors/critical alerts */
-  --accent-red-bg: rgba(181, 51, 59, 0.08);
-  
-  /* Premium Depth & Elevation */
-  --code-bg: rgba(51, 51, 51, 0.04);
-  --shadow-sm: 0 2px 8px rgba(51, 51, 51, 0.04);
-  --shadow-md: 0 8px 24px rgba(51, 51, 51, 0.06);
-  --shadow-lg: 0 16px 40px rgba(51, 51, 51, 0.09);
 
-  /* Typography Fallbacks */
-  --sans: "Kantumruy Pro", system-ui, -apple-system, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* Main Colors */
 
-  /* Baseline Configurations */
-  font: 18px/150% var(--sans);
-  letter-spacing: -0.01em;
-  color-scheme: light dark;
-  color: var(--text);
-  background-color: var(--bg);
+  --bg: #191923;
+
+  --surface: #22222C;
+
+  --surface-light: #292933;
+
+  --primary: #0E79B2;
+
+  --primary-hover: #0C6C9F;
+
+  --primary-light: rgba(14,121,178,.12);
+
+  --text-heading: #FBFEF9;
+
+  --text-body: rgba(251,254,249,.90);
+
+  --text-muted: rgba(251,254,249,.70);
+
+  --border: rgba(251,254,249,.08);
+
+  --border-light: rgba(251,254,249,.05);
+
+  /* Status */
+
+  --success: #22C55E;
+
+  --warning: #F59E0B;
+
+  --danger: #EF4444;
+
+  /* Shadows */
+
+  --shadow-sm:
+      0 2px 8px rgba(0,0,0,.25);
+
+  --shadow-md:
+      0 12px 32px rgba(0,0,0,.35);
+
+  --shadow-lg:
+      0 24px 60px rgba(0,0,0,.45);
+
+  /* Radius */
+
+  --radius-sm: 10px;
+
+  --radius-md: 16px;
+
+  --radius-lg: 24px;
+
+  --radius-xl: 32px;
+
+  /* Typography */
+
+  --sans:
+      "Kantumruy Pro",
+      system-ui,
+      sans-serif;
+
+  --mono:
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Consolas,
+      monospace;
+
+  font-family: var(--sans);
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  letter-spacing: -.01em;
+
+  color: var(--text-body);
+
+  background: var(--bg);
+
   text-rendering: optimizeLegibility;
+
   -webkit-font-smoothing: antialiased;
+
   -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  color-scheme: light;
 }
 
-/* 4. Smooth Dark Mode Transitions */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121318;              /* Deep slate charcoal mix */
-    --surface: #1A1B23;         /* Elevated surfaces */
-    --text-h: #F4F0E4;          /* Warm white for excellent dark contrast */
-    --text: #A0A5B5;            /* Muted text layout */
-    --border: rgba(244, 240, 228, 0.1);
-    
-    --code-bg: rgba(244, 240, 228, 0.06);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.4);
-  }
+/* ===========================================================
+   Reset
+=========================================================== */
 
-  #social .button-icon {
-    filter: invert(1) brightness(1.8);
-  }
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
 }
 
-/* 5. Modern Element Normalization */
-html {
-  scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+body{
+
+    margin:0;
+
+    background:var(--bg);
+
+    color:var(--text-body);
+
+    font-family:var(--sans);
+
+    overflow-x:hidden;
 }
 
-body {
-  margin: 0;
-  background-color: var(--bg);
-  transition: background-color 0.3s ease, color 0.3s ease;
+#root{
+
+    min-height:100vh;
+
+    width:100%;
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
+img,
+svg,
+canvas,
+video,
+picture{
+
+    display:block;
+
+    max-width:100%;
+
+    height:auto;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
+button,
+input,
+textarea,
+select{
+
+    font:inherit;
 }
 
-/* 6. Typography & Headings */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--sans);
-  font-weight: 700;
-  color: var(--text-h);
-  letter-spacing: -0.02em;
-  margin: 0;
+/* ===========================================================
+   Typography
+=========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    margin:0;
+
+    color:var(--text-heading);
+
+    font-weight:700;
+
+    line-height:1.15;
+
+    letter-spacing:-.03em;
 }
 
-h1 {
-  font-size: 48px;
-  line-height: 115%;
-  margin-bottom: 24px;
-  
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin-bottom: 16px;
-  }
+h1{
+
+    font-size:clamp(3rem,5vw,4.5rem);
 }
 
-h2 {
-  font-size: 24px;
-  line-height: 125%;
-  margin-bottom: 12px;
-  
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+h2{
+
+    font-size:clamp(2.25rem,4vw,3.25rem);
 }
 
-/* 7. Code & Micro Elements */
-code {
-  font-family: var(--mono);
-  font-size: 14px;
-  padding: 3px 6px;
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-h);
-  white-space: nowrap;
+h3{
+
+    font-size:clamp(1.5rem,3vw,2rem);
+}
+
+p{
+
+    margin:0;
+
+    color:var(--text-body);
+
+    line-height:1.8;
+}
+
+small{
+
+    color:var(--text-muted);
+}
+
+/* ===========================================================
+   Links
+=========================================================== */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+a:hover{
+
+    color:var(--primary);
+}
+
+/* ===========================================================
+   Forms
+=========================================================== */
+
+input,
+textarea,
+select{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text-heading);
+
+    outline:none;
+
+    transition:.25s;
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:var(--text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(14,121,178,.15);
+}
+
+/* ===========================================================
+   Buttons
+=========================================================== */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+}
+
+button:active{
+
+    transform:translateY(0);
+}
+
+/* ===========================================================
+   Cards
+=========================================================== */
+
+.card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border-light);
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    border-color:rgba(14,121,178,.25);
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-md);
+}
+
+/* ===========================================================
+   Code
+=========================================================== */
+
+code{
+
+    font-family:var(--mono);
+
+    background:rgba(14,121,178,.12);
+
+    color:var(--primary);
+
+    padding:4px 8px;
+
+    border-radius:8px;
+
+    font-size:.9rem;
+}
+
+/* ===========================================================
+   Scrollbar
+=========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#1B1B25;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#0E79B2;
+
+    border-radius:999px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1695D8;
+}
+
+/* ===========================================================
+   Selection
+=========================================================== */
+
+::selection{
+
+    background:#0E79B2;
+
+    color:#FBFEF9;
+}
+
+/* ===========================================================
+   Utility Classes
+=========================================================== */
+
+.container{
+
+    width:min(1280px,calc(100% - 48px));
+
+    margin-inline:auto;
+}
+
+.section{
+
+    padding:96px 0;
+}
+
+.surface{
+
+    background:var(--surface);
+}
+
+.text-primary{
+
+    color:var(--primary);
+}
+
+.text-light{
+
+    color:var(--text-heading);
+}
+
+.text-muted{
+
+    color:var(--text-muted);
+}
+
+.rounded{
+
+    border-radius:24px;
+}
+
+.shadow{
+
+    box-shadow:var(--shadow-md);
+}
+
+/* ===========================================================
+   Responsive
+=========================================================== */
+
+@media (max-width:1024px){
+
+    :root{
+
+        font-size:17px;
+    }
+
+    .container{
+
+        width:calc(100% - 32px);
+    }
+
+    .section{
+
+        padding:72px 0;
+    }
+
+}
+
+@media (max-width:640px){
+
+    :root{
+
+        font-size:16px;
+    }
+
+    h1{
+
+        line-height:1.05;
+    }
+
 }
