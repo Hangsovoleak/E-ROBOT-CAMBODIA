@@ -53,15 +53,12 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-54 bg-[var(--bg)] rounded-t-[2rem] hidden md:block" />
+                <div className="absolute bottom-0 left-0 right-0 h-48 bg-[var(--bg)] rounded-t-[2rem] hidden md:block" />
             </section>
 
-            <div className="container py-16 md:py-8 space-y-16">
+            <div className="container py-8 md:py-4 space-y-8">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                    <div className="w-full">
-                        <CardList />
-                    </div>
                     <div className="lg:sticky lg:top-28 rounded-2xl">
                         <span className="text-xs uppercase text-primary font-bold tracking-wider">តើពួកយើងជានរណា?</span>
                         <h2 className="text-[var(--text-heading)] text-2xl md:text-4xl font-bold mt-2 mb-4 uppercase tracking-tight m-0">
@@ -70,6 +67,9 @@ export default function AboutUs() {
                         <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed m-0 font-medium">
                             ពួកយើងធ្វើអ្វីដែលសិស្សានុសិស្សគួរដឹង គួររៀន និងគួរស្វែងយល់។ យើងគឺជាក្រុមការងារដែលអាចផ្លាស់ប្តូរជីវិត និងជួយឱ្យពួកគេរីកចម្រើនតាមរយៈទេពកោសល្យរៀងៗខ្លួនក្នុងវិស័យបច្ចេកវិទ្យា។
                         </p>
+                    </div>
+                    <div className="w-full">
+                        <CardList />
                     </div>
                 </div>
 
