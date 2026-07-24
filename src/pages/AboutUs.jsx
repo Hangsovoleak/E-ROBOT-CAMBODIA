@@ -7,7 +7,6 @@ import Image2 from '../assets/image2.png';
 import CardList from '../components/cardList';
 import Folder from '../components/Folder';
 import GridSection from '../components/GreidSection'; 
-import GridFeedback from '../components/GridFeedback';
 import Subscribe from '../components/Subscribe';
 
 export default function AboutUs() {
@@ -27,7 +26,7 @@ export default function AboutUs() {
                         <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-md rounded-full px-4 py-1.5 shadow-sm">
                             <Satellite className="w-4 h-4 text-primary animate-pulse" />
                             <span className="text-xs md:text-sm font-bold tracking-wide text-white/95">
-                                ឧត្តមភាពក្នុងការអប់រំបច្គេកវិទ្យា
+                                ឧត្តមភាពក្នុងការអប់រំបច្ចេកវិទ្យា
                             </span>
                         </div>
 
@@ -54,12 +53,15 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-[var(--bg)] rounded-t-[2rem] hidden md:block" />
+                <div className="absolute bottom-0 left-0 right-0 h-54 bg-[var(--bg)] rounded-t-[2rem] hidden md:block" />
             </section>
 
-            <div className="container py-16 md:py-24 space-y-24">
+            <div className="container py-16 md:py-8 space-y-16">
 
-                <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div className="w-full">
+                        <CardList />
+                    </div>
                     <div className="lg:sticky lg:top-28 rounded-2xl">
                         <span className="text-xs uppercase text-primary font-bold tracking-wider">តើពួកយើងជានរណា?</span>
                         <h2 className="text-[var(--text-heading)] text-2xl md:text-4xl font-bold mt-2 mb-4 uppercase tracking-tight m-0">
@@ -68,9 +70,6 @@ export default function AboutUs() {
                         <p className="text-[var(--text-body)] text-sm sm:text-base leading-relaxed m-0 font-medium">
                             ពួកយើងធ្វើអ្វីដែលសិស្សានុសិស្សគួរដឹង គួររៀន និងគួរស្វែងយល់។ យើងគឺជាក្រុមការងារដែលអាចផ្លាស់ប្តូរជីវិត និងជួយឱ្យពួកគេរីកចម្រើនតាមរយៈទេពកោសល្យរៀងៗខ្លួនក្នុងវិស័យបច្ចេកវិទ្យា។
                         </p>
-                    </div>
-                    <div className="w-full">
-                        <CardList />
                     </div>
                 </div>
 
@@ -131,15 +130,6 @@ export default function AboutUs() {
                         title="ការចងចាំរបស់អ្នកស្ម័គ្រចិត្ត និងដំណើរការចុះបេសកកម្មសិក្សា" 
                         to="/sharings" 
                     />
-                </div>
-                
-                <div className="space-y-8">
-                    <div className="max-w-2xl mx-auto text-center">
-                        <h2 className="text-[var(--text-heading)] text-2xl md:text-4xl font-bold m-0 uppercase tracking-tight">
-                            ចំណាប់អារម្មណ៍របស់អ្នកស្ម័គ្រចិត្ត
-                        </h2>
-                    </div>
-                    <GridFeedback />
                 </div>
 
                 <div>
