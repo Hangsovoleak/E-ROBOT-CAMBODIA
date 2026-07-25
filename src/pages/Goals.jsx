@@ -7,7 +7,7 @@ const CARD_DATA = [
   {
     id: 1,
     title: "ផ្តល់ឱកាសឱ្យកុមារកម្ពុជាបានសិក្សា និងស្វែងយល់កាន់តែស៊ីជម្រៅអំពីបច្ចេកវិទ្យា",
-    icon: Dice1
+    icon: Dice3
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const CARD_DATA = [
   {
     id: 3,
     title: "កាត់បន្ថយគម្លាតចំណេះដឹងផ្នែកបច្ចេកវិទ្យារវាងសិស្សនៅតាមខេត្ត និងសិស្សនៅទីក្រុង",
-    icon: Dice3
+    icon: Dice1
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const CARD_DATA = [
 function Goals() {
   return (
     // Replaced layout background with target dark hex token #191923
-    <section className="section min-h-screen bg-[#191923] py-16 text-slate-100">
+    <section className="section min-h-screen bg-ffffff py-16 text-[#191923] ">
       <div className="container max-w-7xl mx-auto px-4 space-y-16 md:space-y-24">
         
         {/* Goals Main Row Layout */}
@@ -37,7 +37,7 @@ function Goals() {
           
           <div className="space-y-6 md:space-y-8">
             {/* Header Description Glass Card */}
-            <div className="rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10">
+            <div className="rounded-3xl bg-[#191923]/96  backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-[#191923]">
               <span className="text-xs uppercase tracking-wider font-bold text-[#ff383c]">ទិសដៅយុទ្ធសាស្ត្រ</span>
               <h1 id="goals-heading" className="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-white m-0">
                 គោលដៅរបស់ E-ROBOT
@@ -54,7 +54,7 @@ function Goals() {
                 return (
                   <article
                     key={item.id}
-                    className="group rounded-2xl bg-white/[0.03] backdrop-blur-xl p-5 shadow-lg border border-white/10 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
+                    className="group rounded-2xl bg-[#191923]/96  backdrop-blur-xl p-5 shadow-lg border border-white/10 hover:bg-[#191923] hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
                       {/* Icon wrapper styling matched with #ff383c */}
@@ -75,7 +75,7 @@ function Goals() {
           </div>
 
           {/* Graphic Side Panel Banner transformed into Dark Accent Card */}
-          <div className="rounded-3xl bg-white/[0.02] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-white text-center flex flex-col items-center justify-center min-h-[440px] relative overflow-hidden group">
+          <div className="rounded-3xl bg-[#191923]/96  backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-[#191923] text-white text-center flex flex-col items-center justify-center min-h-[440px] relative overflow-hidden group">
             {/* Soft background brand ambient lighting element */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#ff383c]/5 rounded-full blur-3xl pointer-events-none" />
             
@@ -85,7 +85,7 @@ function Goals() {
             </h2>
             
             {/* Visual Frame wrapper matching the application theme */}
-            <div className="mt-6 w-full max-w-xs flex justify-center items-center p-4 rounded-2xl bg-white/[0.02] border border-white/10 shadow-inner overflow-hidden transition-colors duration-300 group-hover:border-[#ff383c]/20">
+            <div className="mt-6 w-full max-w-xs flex justify-center items-center p-4 rounded-2xl bg-[#191923]/96 border border-[#191923] shadow-inner overflow-hidden transition-colors duration-300 group-hover:border-[#ff383c]/20">
               <img 
                 alt="E-Robot Goals Illustration Sticker Mascot"
                 src={sticker}
@@ -103,14 +103,14 @@ function Goals() {
 
         {/* Vision Component Wrapper with Dark Glass Panels */}
         <div aria-labelledby="vision-heading" className="space-y-6 md:space-y-8">
-          <div className="max-w-2xl mx-auto rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-center relative">
+          <div className="max-w-2xl mx-auto rounded-3xl bg-[#191923]/96  backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-[#191923] text-center relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
             <h2 id="vision-heading" className="mt-4 text-2xl sm:text-3xl font-bold text-white m-0">
               ចក្ខុវិស័យរបស់ E-ROBOT
             </h2>
           </div>
           
-          <div className="rounded-3xl overflow-hidden bg-white/[0.03] backdrop-blur-xl shadow-2xl border border-white/10 p-4 sm:p-6 md:p-8">
+          <div className="rounded-3xl overflow-hidden bg-[#191923]/96  backdrop-blur-xl shadow-2xl border border-[#191923] p-4 sm:p-6 md:p-8">
             <ImageGoal />
           </div>
         </div>

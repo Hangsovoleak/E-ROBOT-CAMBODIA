@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Share2, Mail, Phone } from "lucide-react";
+import ERobotLogo from "../assets/ERobot.png";
 
+  const closeMenu = () => { setIsOpen(false); setActivePanel(null); };
+  
 export default function Footer() {
   return (
     // Integrated core dark palette #191923 with an upgraded glass-style top border border-white/10
@@ -16,9 +19,13 @@ export default function Footer() {
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-3.5 group">
             {/* Logo Badge Container with clean red glow accent */}
-            <div className="w-12 h-12 rounded-2xl bg-[#ff383c] flex items-center justify-center font-black text-white shadow-lg shadow-[#ff383c]/20 text-base shrink-0 tracking-tighter transform group-hover:scale-105 transition-transform duration-300">
-              E-R
-            </div>
+            <Link to="/" onClick={closeMenu} className="shrink-0 flex items-center">
+                <img 
+                  src={ERobotLogo} 
+                  alt="E-Robot" 
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border border-[var(--border)] transition-transform duration-300 hover:scale-105" 
+                />
+            </Link>
             <span className="text-2xl font-black tracking-tight text-white">
               E-ROBOT
             </span>

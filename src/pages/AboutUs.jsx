@@ -11,7 +11,7 @@ import Subscribe from '../components/Subscribe';
 
 export default function AboutUs() {
     return (
-        <div className="min-h-screen bg-[var(--bg)] w-full overflow-x-hidden antialiased">
+        <div className="min-h-screen bg-white w-full overflow-x-hidden antialiased">
 
             <section className="grid grid-cols-1 grid-rows-1 min-h-[100dvh] w-full relative overflow-hidden">
 
@@ -79,11 +79,11 @@ export default function AboutUs() {
                 {/* About Us Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center">
                     <div className="lg:sticky lg:top-28 rounded-2xl">
-                        <span className="text-xs uppercase text-primary font-bold tracking-wider">តើពួកយើងជានរណា?</span>
-                        <h2 className="text-[var(--text-heading)] text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-3 sm:mb-4 uppercase tracking-tight">
+                        <span className="text-xs uppercase text-[#414dd1] font-bold tracking-wider">តើពួកយើងជានរណា?</span>
+                        <h2 className="text-[#191923] text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-3 sm:mb-4 uppercase tracking-tight" style={{ color: '#191923' }}>
                             ស្វែងយល់អំពីពួកយើង
                         </h2>
-                        <p className="text-[var(--text-body)] text-xs sm:text-base leading-relaxed font-medium">
+                        <p className="text-[#191923] text-xs sm:text-base leading-relaxed font-medium" style={{ color: '#191923' }}>
                             ពួកយើងធ្វើអ្វីដែលសិស្សានុសិស្សគួរដឹង គួររៀន និងគួរស្វែងយល់។ យើងគឺជាក្រុមការងារដែលអាចផ្លាស់ប្តូរជីវិត និងជួយឱ្យពួកគេរីកចម្រើនតាមរយៈទេពកោសល្យរៀងៗខ្លួនក្នុងវិស័យបច្ចេកវិទ្យា។
                         </p>
                     </div>
@@ -96,12 +96,12 @@ export default function AboutUs() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start lg:items-center">
                     <div className="w-full">
                         <div className="max-w-xl">
-                            <span className="text-xs uppercase text-primary font-bold tracking-wider">វិធីសាស្ត្រសិក្សា</span>
-                            <h2 className="text-[var(--text-heading)] text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-3 sm:mb-4 uppercase tracking-tight">
+                            <span className="text-xs uppercase text-[#414dd1] font-bold tracking-wider">វិធីសាស្ត្រសិក្សា</span>
+                            <h2 className="text-[#191923] text-2xl sm:text-3xl md:text-4xl font-bold mt-2 mb-3 sm:mb-4 uppercase tracking-tight" style={{ color: '#191923' }}>
                                 តើអ្នកអាចស្គាល់ពួកយើងតាមរបៀបណា?
                             </h2>
-                            <p className="text-[var(--text-body)] text-xs sm:text-base leading-relaxed font-medium">
-                                E-ROBOT គឺជាអ្នកត្រួសត្រាយផ្លូវនៃវិថីអប់រំថ្មីក្នុងវិស័យបច្ចេកវិទ្យា និងសហគ្រិនភាព ដែលតភ្ជាប់សិស្សានុសិស្សទៅកាន់សក្តានុពលដ៏ល្អបំផុតសម្រាប់ថ្ងៃអនាគតរបស់ពួកគេ។
+                            <p className="text-[#191923] text-xs sm:text-base leading-relaxed font-medium" style={{ color: '#191923' }}>
+                                E-ROBOT គឺជាអ្នកត្រួសត្រាយផ្លូវនៃវិថីអប់រំថ្មីក្នុងវិស័យបច្ចេកវិទ្យា និងសហគ្រិនភាព ដែលតភ្ជាប់សិស្សានុសិស្សទៅកាន់សក្តានុពលដ៏ល្អបំផុតសម្រាប់ថ្ងៃអនាគតរបស់ពួកគេ。
                             </p>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ export default function AboutUs() {
                 {/* Grid Section */}
                 <div className="space-y-6 sm:space-y-8">
                     <div className="max-w-2xl mx-auto text-center">
-                        <h2 className="text-[var(--text-heading)] text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight">
+                        <h2 className="text-[#191923] text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight" style={{ color: '#191923' }}>
                             ហេតុអ្វីត្រូវជ្រើសរើស E-ROBOT?
                         </h2>
                     </div>

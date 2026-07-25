@@ -70,8 +70,6 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
             shadow-lg
           "
         >
-          <FolderOpen size={16} />
-          Folder
         </div>
       </div>
 
@@ -110,7 +108,6 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
               text-[var(--text-muted)]
             "
           >
-            ចុចដើម្បីមើលព័ត៌មាន
           </span>
 
           <div

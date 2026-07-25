@@ -1,10 +1,10 @@
 import React from 'react';
 import ImageFrame from '../components/ImageFrame';
 
-import p1 from '../assets/p1.jpg';
+import p1 from '../assets/s3.png';
 import g2 from '../assets/s2.png';
 import g3 from '../assets/s1.png';
-import g4 from '../assets/s3.png';
+import g4 from '../assets/p1.jpg';
 import p2 from '../assets/p2.jpg';
 import sticker from '../assets/g4.png';
 
@@ -50,11 +50,11 @@ const Events = () => {
 
   return (
     // Replaced layout background with target dark hex token #191923
-    <section className="section min-h-screen bg-[#191923] py-16 text-slate-100">
+    <section className="section min-h-screen bg-white py-16 text-[#191923]">
       <div className="container max-w-7xl mx-auto px-4">
         
         {/* Header section converted to dark glass layout */}
-        <div className="max-w-2xl mx-auto rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-center mb-16 md:mb-20 relative">
+        <div className="max-w-2xl mx-auto rounded-3xl bg-[#191923]/96 backdrop-blur-xl p-6 sm:p-8 shadow-2xl border border-white/10 text-center mb-16 md:mb-20 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white m-0 leading-snug">
             សកម្មភាពរបស់ <span className="text-[#ff383c]">E-ROBOT</span>
@@ -81,10 +81,10 @@ const Events = () => {
 
                 {/* Content description panel completely converted to custom dark glass card */}
                 <div className="w-full lg:w-1/2">
-                  <div className="rounded-3xl bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10 hover:bg-white/[0.06] transition-all duration-300 flex flex-col relative overflow-hidden">
+                  <div className="rounded-3xl bg-[#191923]/96 backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-2xl border border-[#191923] hover:bg-[#191923] transition-all duration-300 flex flex-col relative overflow-hidden">
                     
                     {/* Top strip accent line styling */}
-                    <div className={`absolute top-0 w-24 h-[4px] ${isEven ? 'left-8 bg-slate-300' : 'right-8 bg-[#ff383c]'}`} />
+                    <div className={`absolute top-0 w-24 h-[4px] ${isEven ? 'left-8 bg-[#191923]' : 'right-8 bg-[#ff383c]'}`} />
 
                     <div className="flex flex-wrap items-center gap-3 mb-4">
                       {/* Badge styling adjusted to use color token #ff383c */}
@@ -100,7 +100,7 @@ const Events = () => {
                       {act.title}
                     </h3>
 
-                    <div className="w-16 h-[2px] bg-white/10 my-5" />
+                    <div className="w-16 h-[2px] bg-[#191923]/96 my-5" />
 
                     <p className="text-sm sm:text-base leading-loose text-slate-300 font-medium m-0">
                       {act.description}

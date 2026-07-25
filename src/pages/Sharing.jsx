@@ -19,13 +19,13 @@ const Sharing = () => {
 
   return (
     // Replaced layout background with target dark hex token #191923
-    <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-[#191923] text-slate-100 overflow-hidden">
+    <section className="min-h-screen py-16 px-4 sm:px-6 md:px-10 lg:px-16 bg-white text-[#191923] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* =========================
             HEADER TITLE BANNER CARD (Dark Glass Model)
         ========================== */}
-        <div className="max-w-2xl mx-auto rounded-[2rem] bg-white/[0.03] backdrop-blur-xl p-8 shadow-2xl border border-white/10 text-center mb-24 relative">
+        <div className="max-w-2xl mx-auto rounded-[2rem] bg-[#191923]/96  backdrop-blur-xl p-8 shadow-2xl border border-[#191923] text-center mb-24 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[4px] bg-[#ff383c] rounded-full" />
           <p className="text-sm uppercase text-[#ff383c] font-black tracking-wider">បណ្ណាល័យចែករំលែក</p>
           <p className="mt-4 text-4xl sm:text-5xl font-black tracking-tight text-white">
@@ -47,13 +47,13 @@ const Sharing = () => {
             >
 
               {/* Folder Frame Layout Card in Dark Glassmorphism */}
-              <div className="relative w-full bg-white/[0.03] backdrop-blur-xl rounded-b-[2rem] rounded-tr-[2rem] rounded-tl-md shadow-2xl group-hover:bg-white/[0.06] p-4 border border-white/10 overflow-hidden transition-all duration-300 flex flex-col gap-4">
+              <div className="relative w-full bg-[#191923]/96  backdrop-blur-xl rounded-b-[2rem] rounded-tr-[2rem] rounded-tl-md shadow-2xl group-hover:bg-[#191923] p-4 border border-[#191923] overflow-hidden transition-all duration-300 flex flex-col gap-4">
                 
                 {/* Brand Indicator Line top */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-[#ff383c] rounded-tr-[2rem]" />
 
                 {/* Content Graphic Element Frame */}
-                <div className="w-full h-64 overflow-hidden rounded-2xl bg-white/[0.02] border border-white/5 relative shadow-inner">
+                <div className="w-full h-64 overflow-hidden rounded-2xl bg-[#191923]/96  border border-[#191923] relative shadow-inner">
                   <img 
                     src={card.img} 
                     alt={card.title} 
@@ -61,7 +61,7 @@ const Sharing = () => {
                   />
                   
                   {/* Floating Tag styled to dark aesthetic */}
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-[#191923]/90 backdrop-blur-md text-white border border-white/10 text-[11px] font-bold rounded-full shadow-sm">
+                  <div className="absolute top-3 left-3 px-3 py-1 bg-[#191923]/90 backdrop-blur-md text-white border border-[#191923] text-[11px] font-bold rounded-full shadow-sm">
                     {card.category}
                   </div>
 

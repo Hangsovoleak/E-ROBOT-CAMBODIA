@@ -34,7 +34,7 @@
 
   /* Main Colors */
 
-  --bg: #191923;
+  --bg: #ffffff;
 
   --surface: #22222C;
 
@@ -47,6 +47,8 @@
   --primary-light: rgba(14,121,178,.12);
 
   --text-heading: #FBFEF9;
+
+  --text-content: #191923;
 
   --text-body: rgba(251,254,249,.90);
 
