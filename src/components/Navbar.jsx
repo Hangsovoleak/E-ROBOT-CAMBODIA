@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu, X, QrCode, UserPlus } from "lucide-react";
 
 import ERobotLogo from "../assets/ERobot.png";
-import DonationQR from "../assets/qr.jpg"; 
+import DonationQR from "../assets/QR.jpg"; 
 import RobotQR from "../assets/qrerobot.jpg";
 
 export default function Navbar() {
