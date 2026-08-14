@@ -1,95 +1,77 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { FolderOpen, ArrowRight } from "lucide-react";
 
-const Folder = ({ imgSrc, title, to = "/" }) => {
+const Folder = ({ imgSrc, title, description, to = "/sharings" }) => {
   return (
     <Link
       to={to}
       className="
         group
-        block
+        flex
+        flex-col
+        h-full
         overflow-hidden
         rounded-3xl
         border
-        border-white/5
-        bg-[var(--surface)]
-        shadow-sm
+        border-slate-200
+        bg-white
+        shadow-2xs
         transition-all
-        duration-300
-        hover:-translate-y-2
-        hover:border-[var(--primary)]/40
-        hover:shadow-xl
+        duration-200
+        hover:border-sky-300
+        hover:shadow-md
+        no-underline
       "
     >
       {/* Image */}
-
-      <div className="relative h-60 overflow-hidden bg-[var(--surface-light)]">
+      <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100 shrink-0">
         {imgSrc ? (
-          <>
-            <img
-              src={imgSrc}
-              alt={title}
-              className="
-                h-full
-                w-full
-                object-cover
-                transition-transform
-                duration-500
-                group-hover:scale-105
-              "
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#191923]/60 via-transparent to-transparent" />
-          </>
+          <img
+            src={imgSrc}
+            alt={title}
+            className="
+              h-full
+              w-full
+              object-cover
+              transition-transform
+              duration-500
+              group-hover:scale-105
+            "
+          />
         ) : (
-          <div className="flex h-full flex-col items-center justify-center gap-4 text-[var(--text-muted)]">
-            <FolderOpen size={48} strokeWidth={1.5} />
-            <span className="text-sm font-medium">
-              មិនមានរូបភាព
-            </span>
+          <div className="flex h-full flex-col items-center justify-center gap-2 text-slate-400">
+            <FolderOpen size={36} strokeWidth={1.5} />
+            <span className="text-xs font-medium">មិនមានរូបភាព</span>
           </div>
         )}
-
-        {/* Badge */}
-
-        <div
-          className="
-            absolute
-            left-5
-            top-5
-            flex
-            items-center
-            gap-2
-            rounded-full
-            bg-[var(--primary)]
-            px-4
-            py-2
-            text-sm
-            font-semibold
-            text-white
-            shadow-lg
-          "
-        >
-        </div>
       </div>
 
       {/* Content */}
+      <div className="flex flex-col justify-between flex-1 p-5 bg-white">
+        <div>
+          <h3
+            className="
+              text-base
+              sm:text-lg
+              font-extrabold
+              leading-snug
+              text-slate-900
+              transition-colors
+              duration-200
+              group-hover:text-[#0E79B2]
+              m-0
+            "
+          >
+            {title}
+          </h3>
 
-      <div className="space-y-5 p-6">
-
-        <h3
-          className="
-            text-xl
-            font-bold
-            leading-relaxed
-            text-[var(--text-heading)]
-            transition-colors
-            duration-300
-            group-hover:text-[var(--primary)]
-          "
-        >
-          {title}
-        </h3>
+          {description && (
+            <p className="text-xs text-slate-600 font-medium leading-relaxed mt-2 m-0">
+              {description}
+            </p>
+          )}
+        </div>
 
         <div
           className="
@@ -97,37 +79,32 @@ const Folder = ({ imgSrc, title, to = "/" }) => {
             items-center
             justify-between
             border-t
-            border-white/5
-            pt-4
+            border-slate-100
+            pt-3.5
+            mt-4
           "
         >
-          <span
-            className="
-              text-sm
-              font-medium
-              text-[var(--text-muted)]
-            "
-          >
+          <span className="text-xs font-bold text-[#0E79B2]">
+            មើលព័ត៌មានបន្ថែម
           </span>
 
           <div
             className="
               flex
-              h-10
-              w-10
+              h-8
+              w-8
               items-center
               justify-center
               rounded-full
-              bg-[var(--primary-light)]
-              text-[var(--primary)]
+              bg-sky-50
+              text-[#0E79B2]
               transition-all
-              duration-300
-              group-hover:bg-[var(--primary)]
+              duration-200
+              group-hover:bg-[#0E79B2]
               group-hover:text-white
-              group-hover:translate-x-1
             "
           >
-            <ArrowRight size={18} />
+            <ArrowRight size={14} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ===========================================================
-   Fonts
+   Fonts - Kantumruy Pro
 =========================================================== */
 
 @import "@fontsource/kantumruy-pro/400.css";
@@ -18,459 +18,232 @@
   --font-sans: "Kantumruy Pro", sans-serif;
 
   --color-primary: #0E79B2;
-  --color-dark: #191923;
-  --color-light: #FBFEF9;
+  --color-dark: #0F172A;
+  --color-light: #FFFFFF;
 
-  --color-success: #22C55E;
+  --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
 }
 
 /* ===========================================================
-   Global Design Tokens
+   Global Design Tokens - Handcrafted Human-Designed Light Theme
 =========================================================== */
 
 :root {
 
-  /* Main Colors */
-
+  /* Palette */
   --bg: #ffffff;
-
-  --surface: #22222C;
-
-  --surface-light: #292933;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
 
   --primary: #0E79B2;
-
   --primary-hover: #0C6C9F;
+  --primary-light: rgba(14, 121, 178, 0.08);
 
-  --primary-light: rgba(14,121,178,.12);
+  --text-heading: #0F172A;
+  --text-content: #1E293B;
+  --text-body: #334155;
+  --text-muted: #64748B;
 
-  --text-heading: #FBFEF9;
-
-  --text-content: #191923;
-
-  --text-body: rgba(251,254,249,.90);
-
-  --text-muted: rgba(251,254,249,.70);
-
-  --border: rgba(251,254,249,.08);
-
-  --border-light: rgba(251,254,249,.05);
+  --border: #E2E8F0;
+  --border-subtle: #F1F5F9;
 
   /* Status */
-
-  --success: #22C55E;
-
+  --success: #10B981;
   --warning: #F59E0B;
-
   --danger: #EF4444;
 
   /* Shadows */
-
-  --shadow-sm:
-      0 2px 8px rgba(0,0,0,.25);
-
-  --shadow-md:
-      0 12px 32px rgba(0,0,0,.35);
-
-  --shadow-lg:
-      0 24px 60px rgba(0,0,0,.45);
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.03);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
 
   /* Radius */
-
   --radius-sm: 10px;
-
   --radius-md: 16px;
-
   --radius-lg: 24px;
-
   --radius-xl: 32px;
 
   /* Typography */
-
-  --sans:
-      "Kantumruy Pro",
-      system-ui,
-      sans-serif;
-
-  --mono:
-      ui-monospace,
-      SFMono-Regular,
-      Menlo,
-      Consolas,
-      monospace;
+  --sans: "Kantumruy Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   font-family: var(--sans);
-
-  font-size: 18px;
-
+  font-size: 16px;
   line-height: 1.7;
-
-  letter-spacing: -.01em;
-
+  letter-spacing: -0.01em;
   color: var(--text-body);
-
-  background: var(--bg);
-
+  background: #ffffff;
   text-rendering: optimizeLegibility;
-
   -webkit-font-smoothing: antialiased;
-
   -moz-osx-font-smoothing: grayscale;
-
   color-scheme: light;
 }
 
 /* ===========================================================
-   Reset
+   Reset & Baseline
 =========================================================== */
 
 *,
 *::before,
-*::after{
-    box-sizing:border-box;
+*::after {
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 
-body{
-
-    margin:0;
-
-    background:var(--bg);
-
-    color:var(--text-body);
-
-    font-family:var(--sans);
-
-    overflow-x:hidden;
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--text-body);
+  font-family: var(--sans);
+  overflow-x: hidden;
 }
 
-#root{
-
-    min-height:100vh;
-
-    width:100%;
+#root {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
 }
 
-img,
-svg,
-canvas,
-video,
-picture{
-
-    display:block;
-
-    max-width:100%;
-
-    height:auto;
+img, svg, canvas, video, picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-button,
-input,
-textarea,
-select{
-
-    font:inherit;
+button, input, textarea, select {
+  font: inherit;
 }
 
 /* ===========================================================
-   Typography
+   Typography Hierarchy
 =========================================================== */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6{
-
-    margin:0;
-
-    color:var(--text-heading);
-
-    font-weight:700;
-
-    line-height:1.15;
-
-    letter-spacing:-.03em;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-heading);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
-h1{
-
-    font-size:clamp(3rem,5vw,4.5rem);
+h1 {
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
 }
 
-h2{
-
-    font-size:clamp(2.25rem,4vw,3.25rem);
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
-h3{
-
-    font-size:clamp(1.5rem,3vw,2rem);
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
-p{
-
-    margin:0;
-
-    color:var(--text-body);
-
-    line-height:1.8;
+p {
+  margin: 0;
+  color: var(--text-body);
+  line-height: 1.75;
 }
 
-small{
+small {
+  color: var(--text-muted);
+}
 
-    color:var(--text-muted);
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 /* ===========================================================
-   Links
+   Buttons & Interactive Elements
 =========================================================== */
 
-a{
-
-    color:inherit;
-
-    text-decoration:none;
-
-    transition:.25s;
+button {
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
 }
 
-a:hover{
-
-    color:var(--primary);
+button:active {
+  transform: scale(0.98);
 }
 
 /* ===========================================================
-   Forms
+   Handcrafted Component Utilities
 =========================================================== */
 
-input,
-textarea,
-select{
-
-    width:100%;
-
-    padding:14px 18px;
-
-    border-radius:16px;
-
-    border:1px solid var(--border);
-
-    background:var(--surface);
-
-    color:var(--text-heading);
-
-    outline:none;
-
-    transition:.25s;
+.human-card {
+  background: #ffffff;
+  border: 1px solid #E2E8F0;
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-input::placeholder,
-textarea::placeholder{
-
-    color:var(--text-muted);
+.human-card:hover {
+  border-color: #CBD5E1;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-
-    border-color:var(--primary);
-
-    box-shadow:
-        0 0 0 4px rgba(14,121,178,.15);
-}
-
-/* ===========================================================
-   Buttons
-=========================================================== */
-
-button{
-
-    cursor:pointer;
-
-    border:none;
-
-    transition:.3s;
-}
-
-button:hover{
-
-    transform:translateY(-2px);
-}
-
-button:active{
-
-    transform:translateY(0);
-}
-
-/* ===========================================================
-   Cards
-=========================================================== */
-
-.card{
-
-    background:var(--surface);
-
-    border:1px solid var(--border-light);
-
-    border-radius:24px;
-
-    box-shadow:var(--shadow-sm);
-
-    transition:.3s;
-}
-
-.card:hover{
-
-    border-color:rgba(14,121,178,.25);
-
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow-md);
-}
-
-/* ===========================================================
-   Code
-=========================================================== */
-
-code{
-
-    font-family:var(--mono);
-
-    background:rgba(14,121,178,.12);
-
-    color:var(--primary);
-
-    padding:4px 8px;
-
-    border-radius:8px;
-
-    font-size:.9rem;
+.human-badge {
+  display: inline-flex;
+  items-center: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #F0F9FF;
+  color: #0E79B2;
+  border: 1px solid #BAE6FD;
 }
 
 /* ===========================================================
    Scrollbar
 =========================================================== */
 
-::-webkit-scrollbar{
-
-    width:10px;
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-::-webkit-scrollbar-track{
-
-    background:#1B1B25;
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
 }
 
-::-webkit-scrollbar-thumb{
-
-    background:#0E79B2;
-
-    border-radius:999px;
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 999px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-
-    background:#1695D8;
+::-webkit-scrollbar-thumb:hover {
+  background: #0E79B2;
 }
 
 /* ===========================================================
    Selection
 =========================================================== */
 
-::selection{
-
-    background:#0E79B2;
-
-    color:#FBFEF9;
+::selection {
+  background: rgba(14, 121, 178, 0.15);
+  color: #0E79B2;
 }
 
 /* ===========================================================
    Utility Classes
 =========================================================== */
 
-.container{
-
-    width:min(1280px,calc(100% - 48px));
-
-    margin-inline:auto;
+.container {
+  width: min(1280px, calc(100% - 48px));
+  margin-inline: auto;
 }
 
-.section{
-
-    padding:96px 0;
-}
-
-.surface{
-
-    background:var(--surface);
-}
-
-.text-primary{
-
-    color:var(--primary);
-}
-
-.text-light{
-
-    color:var(--text-heading);
-}
-
-.text-muted{
-
-    color:var(--text-muted);
-}
-
-.rounded{
-
-    border-radius:24px;
-}
-
-.shadow{
-
-    box-shadow:var(--shadow-md);
-}
-
-/* ===========================================================
-   Responsive
-=========================================================== */
-
-@media (max-width:1024px){
-
-    :root{
-
-        font-size:17px;
-    }
-
-    .container{
-
-        width:calc(100% - 32px);
-    }
-
-    .section{
-
-        padding:72px 0;
-    }
-
-}
-
-@media (max-width:640px){
-
-    :root{
-
-        font-size:16px;
-    }
-
-    h1{
-
-        line-height:1.05;
-    }
-
+.section {
+  padding: 80px 0;
 }

@@ -1,3 +1,4 @@
+import React from "react";
 import { NotebookTabs, Cpu, Route } from "lucide-react";
 
 const cardData = [
@@ -20,8 +21,8 @@ const cardData = [
 
 export default function GridSection() {
   return (
-    <section className="py-20">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2 lg:grid-cols-3">
+    <section className="py-6 bg-white">
+      <div className="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
 
         {cardData.map((item) => {
           const Icon = item.icon;
@@ -35,18 +36,17 @@ export default function GridSection() {
                 overflow-hidden
                 rounded-3xl
                 border
-                border-white/5
-                bg-[var(--surface)]
-                p-8
+                border-slate-200
+                bg-white
+                p-7
+                shadow-xs
                 transition-all
                 duration-300
-                hover:-translate-y-2
-                hover:border-[var(--primary)]/40
-                hover:shadow-xl
+                hover:-translate-y-1.5
+                hover:border-[#0E79B2]/40
+                hover:shadow-md
               "
             >
-              {/* Accent line */}
-
               <div
                 className="
                   absolute
@@ -54,34 +54,34 @@ export default function GridSection() {
                   top-0
                   h-1
                   w-0
-                  bg-[var(--primary)]
+                  bg-[#0E79B2]
                   transition-all
                   duration-500
                   group-hover:w-full
                 "
               />
 
-              {/* Icon */}
-
               <div
                 className="
-                  mb-8
+                  mb-6
                   flex
-                  h-16
-                  w-16
+                  h-14
+                  w-14
                   items-center
                   justify-center
                   rounded-2xl
-                  bg-[var(--primary-light)]
+                  bg-sky-50
+                  border
+                  border-sky-100
                   transition-all
                   duration-300
-                  group-hover:bg-[var(--primary)]
+                  group-hover:bg-[#0E79B2]
                 "
               >
                 <Icon
-                  size={30}
+                  size={26}
                   className="
-                    text-[var(--primary)]
+                    text-[#0E79B2]
                     transition-colors
                     duration-300
                     group-hover:text-white
@@ -89,29 +89,28 @@ export default function GridSection() {
                 />
               </div>
 
-              {/* Title */}
-
               <h3
                 className="
-                  mb-4
-                  text-2xl
+                  mb-3
+                  text-xl
                   font-bold
                   leading-snug
-                  text-[var(--text-heading)]
+                  text-slate-900
                   transition-colors
                   duration-300
-                  group-hover:text-[var(--primary)]
+                  group-hover:text-[#0E79B2]
                 "
               >
                 {item.title}
               </h3>
 
-              {/* Description */}
-
               <p
                 className="
-                  leading-8
-                  text-[var(--text-body)]
+                  leading-relaxed
+                  text-xs
+                  sm:text-sm
+                  text-slate-600
+                  font-medium
                 "
               >
                 {item.desc}

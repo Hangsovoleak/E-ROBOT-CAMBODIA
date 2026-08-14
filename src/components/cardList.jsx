@@ -1,3 +1,4 @@
+import React from "react";
 import { Terminal, Lightbulb, Rocket } from "lucide-react";
 
 const cardData = [
@@ -26,7 +27,7 @@ const cardData = [
 
 export default function CardList() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-5">
       {cardData.map((item) => {
         const Icon = item.icon;
 
@@ -40,38 +41,38 @@ export default function CardList() {
               gap-5
               rounded-3xl
               border
-              border-white/5
-              bg-[var(--surface)]
+              border-slate-200
+              bg-white
               p-6
-              shadow-sm
+              shadow-xs
               transition-all
               duration-300
               hover:-translate-y-1
-              hover:border-[var(--primary)]/40
-              hover:shadow-lg
+              hover:border-[#0E79B2]/40
+              hover:shadow-md
             "
           >
-            {/* Icon */}
-
             <div
               className="
                 flex
-                h-16
-                w-16
+                h-14
+                w-14
                 shrink-0
                 items-center
                 justify-center
                 rounded-2xl
-                bg-[var(--primary-light)]
+                bg-sky-50
+                border
+                border-sky-100
                 transition-all
                 duration-300
-                group-hover:bg-[var(--primary)]
+                group-hover:bg-[#0E79B2]
               "
             >
               <Icon
-                size={28}
+                size={26}
                 className="
-                  text-[var(--primary)]
+                  text-[#0E79B2]
                   transition-colors
                   duration-300
                   group-hover:text-white
@@ -79,18 +80,15 @@ export default function CardList() {
               />
             </div>
 
-            {/* Content */}
-
             <div className="flex-1">
-
               <h3
                 className="
-                  text-xl
+                  text-lg
                   font-bold
-                  text-[var(--text-heading)]
+                  text-slate-900
                   transition-colors
                   duration-300
-                  group-hover:text-[var(--primary)]
+                  group-hover:text-[#0E79B2]
                 "
               >
                 {item.title}
@@ -98,32 +96,17 @@ export default function CardList() {
 
               <p
                 className="
-                  mt-3
-                  leading-8
-                  text-[var(--text-body)]
+                  mt-2
+                  leading-relaxed
+                  text-xs
+                  sm:text-sm
+                  text-slate-600
+                  font-medium
                 "
               >
                 {item.description}
               </p>
             </div>
-
-            {/* Decorative Dot */}
-
-            <div
-              className="
-                mt-2
-                hidden
-                h-3
-                w-3
-                rounded-full
-                bg-[var(--primary)]
-                opacity-0
-                transition-all
-                duration-300
-                group-hover:opacity-100
-                md:block
-              "
-            />
           </article>
         );
       })}

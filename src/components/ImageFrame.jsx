@@ -1,90 +1,58 @@
 import React from "react";
 
 export default function ImageFrame({ src, alt, defaultImage }) {
+  const imageSrc = Array.isArray(src) ? src[0] : src;
+
   return (
-    <div className="relative inline-block w-full p-4 sm:p-6 lg:p-8 group">
-      
-      {/* Ambient Background Frame using your theme design tokens */}
+    <div className="relative w-full group">
+      {/* Top-Left Accent Bar */}
       <div 
         className="
           absolute 
-          inset-0 
-          m-2 
-          sm:m-4 
-          rounded-3xl 
-          border 
-          border-[var(--border-light)] 
-          bg-[var(--surface)] 
-          opacity-50 
-          z-0
-        " 
-      />
-
-      {/* Top-Left Accent Block (Primary Blue Identity Bar) */}
-      <div 
-        className="
-          absolute 
-          top-2 
-          sm:top-4 
-          left-4 
-          sm:left-6 
+          -top-1.5 
+          left-6 
           w-16 
-          sm:w-24 
+          sm:w-20 
           h-1.5 
-          bg-primary 
+          bg-[#0E79B2] 
           rounded-full 
-          z-10 
+          z-20 
           transition-all 
           duration-300 
-          group-hover:w-20
+          group-hover:w-28
         " 
       />
 
-      {/* Bottom-Right Accent Block (Dynamic Secondary Accent Identity Bar) */}
-      <div 
-        className="
-          absolute 
-          bottom-2 
-          sm:bottom-4 
-          right-4 
-          sm:right-6 
-          w-16 
-          sm:w-24 
-          h-1.5 
-          bg-primary/60 
-          rounded-full 
-          z-10 
-          transition-all 
-          duration-300 
-          group-hover:w-20
-        " 
-      />
-
-      {/* Elevated Image Container */}
+      {/* Clean Single Image Container with Uniform Height */}
       <div 
         className="
           relative 
-          z-20 
+          z-10 
+          w-full
+          h-56
+          sm:h-64
+          md:h-72
+          lg:h-80
           overflow-hidden 
           rounded-3xl 
           border 
-          border-[var(--border-light)] 
-          bg-[var(--surface)] 
-          shadow-md 
+          border-slate-200 
+          bg-slate-100 
+          shadow-2xs 
           transition-all 
           duration-300 
-          group-hover:shadow-xl
+          group-hover:border-sky-300
+          group-hover:shadow-md
         "
       >
         <img
-          src={src || defaultImage}
+          src={imageSrc || defaultImage}
           alt={alt || "E-ROBOT Activity"}
           className="
             w-full 
-            max-w-full 
-            md:max-w-lg 
-            h-auto 
+            h-full 
             object-cover 
+            object-center
             block 
             transition-transform 
             duration-500 

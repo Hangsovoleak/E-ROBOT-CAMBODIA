@@ -1,82 +1,75 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Share2, Mail, Phone } from "lucide-react";
+import { Share2, Mail, Phone, Heart } from "lucide-react";
 import ERobotLogo from "../assets/ERobot.png";
 
-  const closeMenu = () => { setIsOpen(false); setActivePanel(null); };
-  
 export default function Footer() {
   return (
-    // Integrated core dark palette #191923 with an upgraded glass-style top border border-white/10
-    <footer className="w-full bg-[#191923] text-slate-300 px-6 sm:px-10 lg:px-16 py-14 lg:py-20 border-t border-white/10 relative overflow-hidden">
-      
-      {/* Subtle background ambient light dot to give depth */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#ff383c]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+    <footer className="w-full bg-white text-slate-700 px-6 sm:px-10 lg:px-16 py-12 lg:py-16 border-t border-slate-200 relative">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
-        
         {/* Brand Column */}
-        <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3.5 group">
-            {/* Logo Badge Container with clean red glow accent */}
-            <Link to="/" onClick={closeMenu} className="shrink-0 flex items-center">
-                <img 
-                  src={ERobotLogo} 
-                  alt="E-Robot" 
-                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border border-[var(--border)] transition-transform duration-300 hover:scale-105" 
-                />
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-3">
+            <Link to="/" className="shrink-0 flex items-center">
+              <img
+                src={ERobotLogo}
+                alt="E-Robot Cambodia"
+                className="w-11 h-11 rounded-full object-cover border border-slate-200 transition-transform duration-300 hover:scale-105 shadow-xs"
+              />
             </Link>
-            <span className="text-2xl font-black tracking-tight text-white">
-              E-ROBOT
+            <span className="text-xl font-bold tracking-tight text-slate-900">
+              E-ROBOT CAMBODIA
             </span>
           </div>
-          
-          <p className="text-sm sm:text-base leading-relaxed max-w-sm text-slate-400 font-medium">
+
+          <p className="text-xs sm:text-sm leading-relaxed max-w-sm text-slate-600 font-medium">
             ចូលរួមជាមួយយើងដើម្បីកុមារកម្ពុជា និងជាផ្នែកមួយនៃការជំរុញ ការអប់រំផ្នែកបច្ចេកវិទ្យាឱ្យកាន់តែរីកចម្រើន។
           </p>
 
-          {/* Clean Glassmorphic Social Badge */}
-          <div className="flex items-center mt-2">
-            <a 
-              href="https://www.facebook.com/share/1bJ4sJVeN8/?mibextid=wwXIfr" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+          {/* Social Media Link */}
+          <div className="flex items-center mt-1">
+            <a
+              href="https://www.facebook.com/share/1bJ4sJVeN8/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook page"
-              className="w-11 h-11 flex items-center justify-center bg-white/[0.03] border border-white/10 text-slate-300 rounded-2xl hover:bg-[#ff383c] hover:text-white hover:border-transparent transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#ff383c]/20"
+              className="w-10 h-10 flex items-center justify-center bg-slate-100 border border-slate-200 text-slate-700 rounded-xl hover:bg-[#0E79B2] hover:text-white hover:border-transparent transition-all duration-300 hover:-translate-y-0.5 shadow-xs"
             >
-              <Share2 className="w-5 h-5" />
+              <Share2 className="w-4 h-4" />
             </a>
           </div>
         </div>
 
         {/* Navigation Links Column */}
-        <div className="flex flex-col gap-5 lg:pl-12">
-          <div className="relative">
-            <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#ff383c]">មាតិកា</p>
-            <div className="w-6 h-[2px] bg-[#ff383c]/50 mt-1.5 rounded-full" />
+        <div className="flex flex-col gap-4 lg:pl-8">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#0E79B2]">មាតិកា</p>
+            <div className="w-6 h-[2px] bg-[#0E79B2] mt-1 rounded-full" />
           </div>
-          <ul className="flex flex-col gap-3.5 text-sm sm:text-base font-semibold">
+          <ul className="flex flex-col gap-2.5 text-xs sm:text-sm font-semibold list-none p-0 m-0">
             <li>
-              <Link to="/" className="text-slate-400 hover:text-[#ff383c] transition-colors duration-200 no-underline inline-flex items-center gap-1 group">
-                <span className="w-0 h-[1.5px] bg-[#ff383c] group-hover:w-2 transition-all duration-200 rounded-full" />
+              <Link to="/" className="text-slate-600 hover:text-[#0E79B2] transition-colors duration-200">
+                ទំព័រដើម
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-slate-600 hover:text-[#0E79B2] transition-colors duration-200">
                 អំពីយើង
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-slate-400 hover:text-[#ff383c] transition-colors duration-200 no-underline inline-flex items-center gap-1 group">
-                <span className="w-0 h-[1.5px] bg-[#ff383c] group-hover:w-2 transition-all duration-200 rounded-full" />
-                គោលដៅ
+              <Link to="/service" className="text-slate-600 hover:text-[#0E79B2] transition-colors duration-200">
+                សកម្មភាព
               </Link>
             </li>
             <li>
-              <Link to="/services" className="text-slate-400 hover:text-[#ff383c] transition-colors duration-200 no-underline inline-flex items-center gap-1 group">
-                <span className="w-0 h-[1.5px] bg-[#ff383c] group-hover:w-2 transition-all duration-200 rounded-full" />
-                ព្រឹត្តិការណ៍
+              <Link to="/contact" className="text-slate-600 hover:text-[#0E79B2] transition-colors duration-200">
+                ទំនាក់ទំនង
               </Link>
             </li>
             <li>
-              <Link to="/sharings" className="text-slate-400 hover:text-[#ff383c] transition-colors duration-200 no-underline inline-flex items-center gap-1 group">
-                <span className="w-0 h-[1.5px] bg-[#ff383c] group-hover:w-2 transition-all duration-200 rounded-full" />
+              <Link to="/sharings" className="text-slate-600 hover:text-[#0E79B2] transition-colors duration-200">
                 មាតិកាចែករំលែក
               </Link>
             </li>
@@ -84,30 +77,39 @@ export default function Footer() {
         </div>
 
         {/* Contact Info Column */}
-        <div className="flex flex-col gap-5">
-          <div className="relative">
-            <p className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#ff383c]">ទំនាក់ទំនង</p>
-            <div className="w-6 h-[2px] bg-[#ff383c]/50 mt-1.5 rounded-full" />
+        <div className="flex flex-col gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-[#0E79B2]">ទំនាក់ទំនង</p>
+            <div className="w-6 h-[2px] bg-[#0E79B2] mt-1 rounded-full" />
           </div>
-          <div className="flex flex-col gap-4 text-sm sm:text-base font-semibold text-slate-400">
-            <a 
-              href="mailto:erobotteam@gmail.com" 
-              className="flex items-center gap-3 break-all text-slate-400 hover:text-[#ff383c] transition-colors duration-200 no-underline group"
+          <div className="flex flex-col gap-3 text-xs sm:text-sm font-semibold text-slate-600">
+            <a
+              href="mailto:erobotteam@gmail.com"
+              className="flex items-center gap-3 text-slate-600 hover:text-[#0E79B2] transition-colors duration-200"
             >
-              <div className="w-9 h-9 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#ff383c]/10 group-hover:text-[#ff383c] transition-all duration-200 shrink-0">
-                <Mail className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0E79B2] shrink-0">
+                <Mail className="w-3.5 h-3.5" />
               </div>
-              <span>erobotteam@gmail.com</span>
+              <span className="break-all">erobotteam@gmail.com</span>
             </a>
-            
-            <div className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#ff383c]/10 group-hover:text-[#ff383c] transition-all duration-200 shrink-0">
-                <Phone className="w-4 h-4" />
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0E79B2] shrink-0">
+                <Phone className="w-3.5 h-3.5" />
               </div>
-              <span className="group-hover:text-slate-300 transition-colors duration-200">+855 10 567 014</span>
+              <span>+855 10 567 014</span>
             </div>
           </div>
         </div>
+
+      </div>
+
+      {/* Bottom Copyright bar */}
+      <div className="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+        <p>© {new Date().getFullYear()} E-ROBOT CAMBODIA. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        <p className="flex items-center gap-1">
+          បង្កើតឡើងដោយក្តីស្រឡាញ់ <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> សម្រាប់កុមារកម្ពុជា
+        </p>
       </div>
     </footer>
   );
