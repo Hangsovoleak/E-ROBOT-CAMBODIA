@@ -33,32 +33,10 @@ export default function GridSection() {
           return (
             <article
               key={item.title}
-              className="
-                rounded-sm
-                border
-                border-[#192048]/10
-                bg-white
-                p-6
-                shadow-none
-                flex
-                flex-col
-                justify-between
-              "
+              className="rounded-sm border border-[#192048]/10 bg-white p-6 shadow-none flex flex-col justify-between"
             >
               <div>
-                <div
-                  className="
-                    mb-4
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-sm
-                    bg-[#192048]
-                    text-white
-                  "
-                >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-sm bg-[#192048] text-white">
                   <Icon size={22} className="text-white" />
                 </div>
 

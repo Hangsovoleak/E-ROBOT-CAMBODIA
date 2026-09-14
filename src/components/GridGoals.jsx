@@ -15,23 +15,7 @@ export default function GridGoals() {
         {t.goals.gridCards.map((item, index) => (
           <article
             key={index}
-            className="
-              group
-              relative
-              overflow-hidden
-              rounded-sm
-              bg-[#192048]
-              p-6
-              shadow-none
-              transition-colors
-              duration-200
-              hover:bg-[#232b57]
-              flex
-              flex-col
-              justify-between
-              gap-4
-              min-h-[120px]
-            "
+            className="group relative overflow-hidden rounded-sm bg-[#192048] p-6 shadow-none transition-colors duration-200 hover:bg-[#232b57] flex flex-col justify-between gap-4 min-h-[120px]"
           >
             <div className="flex items-center justify-between gap-4 w-full h-full">
               <div className="flex-1 min-w-0">

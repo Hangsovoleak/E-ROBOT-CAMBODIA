@@ -88,49 +88,13 @@ export default function Subscribe() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={currentUser ? `Email: ${currentUser.email}` : t.subscribe.placeholder}
-            className="
-              w-full 
-              h-11 
-              px-4 
-              rounded-sm 
-              text-[#192048] 
-              text-xs 
-              sm:text-sm 
-              bg-white 
-              border 
-              border-white 
-              shadow-none
-              focus:outline-none 
-            "
+            className="w-full h-11 px-4 rounded-sm text-[#192048] text-xs sm:text-sm bg-white border border-white shadow-none focus:outline-none"
           />
 
           <button 
             type="submit"
             disabled={loading}
-            className="
-              w-full
-              sm:w-auto
-              h-11
-              px-6 
-              bg-[#FF383C] 
-              text-white 
-              text-xs 
-              sm:text-sm 
-              font-bold 
-              rounded-sm
-              transition-colors 
-              duration-200 
-              border-none 
-              cursor-pointer 
-              hover:bg-[#e02d31] 
-              shadow-none
-              flex 
-              items-center 
-              justify-center
-              gap-2
-              shrink-0
-              disabled:opacity-50
-            "
+            className="w-full sm:w-auto h-11 px-6 bg-[#FF383C] text-white text-xs sm:text-sm font-bold rounded-sm transition-colors duration-200 border-none cursor-pointer hover:bg-[#e02d31] shadow-none flex items-center justify-center gap-2 shrink-0 disabled:opacity-50"
           >
             <Send className="w-4 h-4" />
             <span>{loading ? t.subscribe.submitting : t.subscribe.button}</span>

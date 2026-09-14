@@ -9,33 +9,14 @@ const Folder = ({ imgSrc, title, description, to = "/sharings" }) => {
   return (
     <Link
       to={to}
-      className="
-        group
-        flex
-        flex-col
-        h-full
-        overflow-hidden
-        rounded-sm
-        border
-        border-[#192048]/10
-        bg-white
-        shadow-none
-        transition-colors
-        duration-200
-        hover:border-[#FF383C]
-        no-underline
-      "
+      className="group flex flex-col h-full overflow-hidden rounded-sm border border-[#192048]/10 bg-white shadow-none transition-colors duration-200 hover:border-[#FF383C] no-underline"
     >
       <div className="relative h-48 sm:h-52 overflow-hidden bg-slate-100 shrink-0">
         {imgSrc ? (
           <img
             src={imgSrc}
             alt={title}
-            className="
-              h-full
-              w-full
-              object-cover
-            "
+            className="h-full w-full object-cover"
           />
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-2 text-slate-400">

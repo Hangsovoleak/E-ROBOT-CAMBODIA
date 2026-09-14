@@ -34,31 +34,9 @@ export default function CardList() {
         return (
           <article
             key={item.id}
-            className="
-              flex
-              items-start
-              gap-4
-              rounded-sm
-              border
-              border-[#192048]/10
-              bg-white
-              p-5
-              shadow-none
-            "
+            className="flex items-start gap-4 rounded-sm border border-[#192048]/10 bg-white p-5 shadow-none"
           >
-            <div
-              className="
-                flex
-                h-12
-                w-12
-                shrink-0
-                items-center
-                justify-center
-                rounded-sm
-                bg-[#192048]
-                text-white
-              "
-            >
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-[#192048] text-white">
               <Icon size={22} className="text-white" />
             </div>
 
