@@ -1,249 +1,156 @@
 @import "tailwindcss";
-
-/* ===========================================================
-   Fonts - Kantumruy Pro
-=========================================================== */
-
 @import "@fontsource/kantumruy-pro/400.css";
 @import "@fontsource/kantumruy-pro/500.css";
 @import "@fontsource/kantumruy-pro/600.css";
 @import "@fontsource/kantumruy-pro/700.css";
 
-/* ===========================================================
-   Tailwind Theme
-=========================================================== */
-
 @theme {
   --font-kantumruy: "Kantumruy Pro", sans-serif;
   --font-sans: "Kantumruy Pro", sans-serif;
 
-  --color-primary: #0E79B2;
-  --color-dark: #0F172A;
-  --color-light: #FFFFFF;
-
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-danger: #EF4444;
+  --color-navy: #192048;
+  --color-red: #FF383C;
+  --color-bg: #F7F7F7;
 }
 
-/* ===========================================================
-   Global Design Tokens - Handcrafted Human-Designed Light Theme
-=========================================================== */
+@layer base {
+  :root {
+    --bg: #F7F7F7;
+    --surface: #FFFFFF;
+    --surface-navy: #192048;
 
-:root {
+    --navy: #192048;
+    --navy-hover: #222a58;
+    --red: #FF383C;
+    --red-hover: #e02d31;
 
-  /* Palette */
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-alt: #f8fafc;
+    --text-heading: #192048;
+    --text-body: #192048;
+    --text-muted: #525a7a;
 
-  --primary: #0E79B2;
-  --primary-hover: #0C6C9F;
-  --primary-light: rgba(14, 121, 178, 0.08);
+    --border: #e2e5ec;
 
-  --text-heading: #0F172A;
-  --text-content: #1E293B;
-  --text-body: #334155;
-  --text-muted: #64748B;
+    --sans: "Kantumruy Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --border: #E2E8F0;
-  --border-subtle: #F1F5F9;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    color: var(--text-body);
+    background-color: #F7F7F7;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light;
+  }
 
-  /* Status */
-  --success: #10B981;
-  --warning: #F59E0B;
-  --danger: #EF4444;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    box-shadow: none !important;
+  }
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.03);
-  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  html {
+    scroll-behavior: smooth;
+    background-color: #F7F7F7;
+  }
 
-  /* Radius */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  body {
+    margin: 0;
+    background-color: #F7F7F7;
+    color: var(--text-body);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
 
-  /* Typography */
-  --sans: "Kantumruy Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #F7F7F7;
+  }
 
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.7;
-  letter-spacing: -0.01em;
-  color: var(--text-body);
-  background: #ffffff;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color-scheme: light;
+  img,
+  svg,
+  canvas,
+  video,
+  picture {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    color: inherit;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
+
+  p {
+    margin: 0;
+    color: inherit;
+    line-height: 1.75;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: all 0.15s ease-in-out;
+  }
 }
-
-/* ===========================================================
-   Reset & Baseline
-=========================================================== */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  background-color: #ffffff;
-}
-
-body {
-  margin: 0;
-  background: #ffffff;
-  color: var(--text-body);
-  font-family: var(--sans);
-  overflow-x: hidden;
-}
-
-#root {
-  min-height: 100vh;
-  width: 100%;
-  background-color: #ffffff;
-}
-
-img, svg, canvas, video, picture {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-button, input, textarea, select {
-  font: inherit;
-}
-
-/* ===========================================================
-   Typography Hierarchy
-=========================================================== */
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  color: var(--text-heading);
-  font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-}
-
-h1 {
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-}
-
-h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-}
-
-p {
-  margin: 0;
-  color: var(--text-body);
-  line-height: 1.75;
-}
-
-small {
-  color: var(--text-muted);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-/* ===========================================================
-   Buttons & Interactive Elements
-=========================================================== */
-
-button {
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-/* ===========================================================
-   Handcrafted Component Utilities
-=========================================================== */
-
-.human-card {
-  background: #ffffff;
-  border: 1px solid #E2E8F0;
-  border-radius: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.human-card:hover {
-  border-color: #CBD5E1;
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
-}
-
-.human-badge {
-  display: inline-flex;
-  items-center: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 700;
-  background: #F0F9FF;
-  color: #0E79B2;
-  border: 1px solid #BAE6FD;
-}
-
-/* ===========================================================
-   Scrollbar
-=========================================================== */
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F7F7F7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #192048;
   border-radius: 999px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #0E79B2;
-}
-
-/* ===========================================================
-   Selection
-=========================================================== */
-
 ::selection {
-  background: rgba(14, 121, 178, 0.15);
-  color: #0E79B2;
+  background: rgba(255, 56, 60, 0.2);
+  color: #FF383C;
 }
-
-/* ===========================================================
-   Utility Classes
-=========================================================== */
 
 .container {
-  width: min(1280px, calc(100% - 48px));
+  width: min(1200px, calc(100% - 32px));
   margin-inline: auto;
-}
-
-.section {
-  padding: 80px 0;
 }

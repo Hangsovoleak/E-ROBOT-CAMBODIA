@@ -1,28 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Menu, X, QrCode, LogIn, User, LogOut, Heart, CheckCircle2, ChevronDown, ShieldCheck, Mail } from "lucide-react";
+import { Menu, X, QrCode, LogIn, User, LogOut, Heart, CheckCircle2, ChevronDown, ShieldCheck, Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
+import { useLanguage } from "../context/LanguageContext";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import AuthModal from "./AuthModal";
+import { Globe } from "lucide-react";
 
 import ERobotLogo from "../assets/ERobot.png";
 import DonationQR from "../assets/QR.jpg"; 
-
-// ----------------------------------------------------
-// Navigation Items - Easy to maintain & extend
-// ----------------------------------------------------
-const NAV_ITEMS = [
-  { to: "/", label: "ទំព័រដើម" },
-  { to: "/about", label: "អំពីយើង" },
-  { to: "/services", label: "សកម្មភាព" },
-  { to: "/contact", label: "ទំនាក់ទំនង" },
-  { to: "/sharings", label: "ការចែករំលែក" },
-];
+import TelegramQR from "../assets/telegram_bong_kosal.png";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [donationModalOpen, setDonationModalOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authTab, setAuthTab] = useState("login"); // "login" | "signup"
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -34,7 +27,15 @@ export default function Navbar() {
   const [donating, setDonating] = useState(false);
 
   const { currentUser, logout } = useAuth();
+  const { language, toggleLanguage, t } = useLanguage();
   const navigate = useNavigate();
+
+  const NAV_ITEMS = [
+    { to: "/", label: t.nav.home },
+    { to: "/about", label: t.nav.goals },
+    { to: "/services", label: t.nav.events },
+    { to: "/sharings", label: t.nav.sharings },
+  ];
 
   const dropdownRef = useRef(null);
   const donationPanelRef = useRef(null);
@@ -62,6 +63,7 @@ export default function Navbar() {
     setMobileMenuOpen(false);
     setUserDropdownOpen(false);
     setDonationModalOpen(false);
+    setContactModalOpen(false);
   };
 
   const handleOpenAuth = (tab = "login") => {
@@ -100,42 +102,42 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-2xs">
+      <header className="sticky top-0 z-50 w-full bg-[#F7F7F7] border-b border-[#192048]/10 shadow-none">
         <div className="container mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           
           {/* Brand Logo */}
           <Link 
             to="/" 
             onClick={closeAll} 
-            className="flex items-center gap-3 shrink-0 group focus:outline-none"
+            className="flex items-center gap-3 shrink-0 focus:outline-none"
           >
             <img 
               src={ERobotLogo} 
               alt="E-Robot Cambodia" 
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-slate-200 shadow-xs transition-transform duration-300 group-hover:scale-105" 
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border border-[#192048]/20 shadow-none" 
             />
             <div className="flex flex-col">
-              <span className="font-bold text-slate-900 tracking-tight text-base sm:text-lg leading-tight group-hover:text-[#0E79B2] transition-colors">
+              <span className="font-bold text-[#192048] tracking-tight text-base sm:text-lg leading-tight">
                 E-ROBOT
               </span>
-              <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase hidden sm:block">
+              <span className="text-[10px] font-semibold text-[#192048]/60 tracking-wider uppercase hidden sm:block">
                 CAMBODIA
               </span>
             </div>
           </Link>
 
-          {/* Desktop Links */}
-          <ul className="hidden lg:flex items-center gap-1.5 flex-1 justify-center list-none m-0 p-0">
+          {/* Desktop Nav Links */}
+          <ul className="hidden lg:flex items-center gap-2 flex-1 justify-center list-none m-0 p-0">
             {NAV_ITEMS.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.to === "/"}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap block ${
+                    `px-3 py-2 text-xs sm:text-sm font-extrabold transition-colors whitespace-nowrap block ${
                       isActive
-                        ? "text-[#0E79B2] bg-sky-50 border border-sky-200/80 font-bold shadow-2xs"
-                        : "text-slate-700 border border-transparent hover:text-[#0E79B2] hover:bg-slate-100/80"
+                        ? "text-[#FF383C]"
+                        : "text-[#192048] hover:text-[#FF383C]"
                     }`
                   }
                 >
@@ -146,118 +148,105 @@ export default function Navbar() {
           </ul>
 
           {/* Desktop Right Action Area */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2.5 shrink-0">
             
+            {/* Language Switcher Button */}
+            <button
+              onClick={toggleLanguage}
+              className="px-2.5 py-1.5 rounded-sm text-xs font-extrabold bg-[#192048]/10 hover:bg-[#192048]/20 text-[#192048] transition-colors border border-[#192048]/20 cursor-pointer shadow-none flex items-center gap-1.5 shrink-0"
+              title="Switch Language / ប្តូរភាសា"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#192048]" />
+              <span>{language === "km" ? "EN" : "KM"}</span>
+            </button>
+
+            {/* Contact Button */}
+            <button
+              onClick={() => {
+                setContactModalOpen(true);
+                setDonationModalOpen(false);
+                setUserDropdownOpen(false);
+              }}
+              className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-white" />
+              <span>{t.nav.contact}</span>
+            </button>
+
             {/* Donation Button */}
             <button
               onClick={() => {
                 setDonateSuccess(false);
                 setDonationModalOpen(!donationModalOpen);
+                setContactModalOpen(false);
                 setUserDropdownOpen(false);
               }}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 border shadow-2xs cursor-pointer active:scale-95 flex items-center gap-2 ${
-                donationModalOpen
-                  ? "bg-slate-900 text-white border-slate-900"
-                  : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"
-              }`}
+              className="px-3.5 py-2 rounded-sm text-xs font-bold bg-[#FF383C] hover:bg-[#e02d31] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
             >
-              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
-              <span>{donationModalOpen ? "បិទ" : "ឧបត្ថម្ភពួកយើង"}</span>
+              <Heart className="w-3.5 h-3.5 fill-white text-white" />
+              <span>{t.nav.donate}</span>
             </button>
 
-            {/* Authenticated User Profile in Navbar Dropdown */}
+            {/* Authenticated User Profile in Navbar */}
             {currentUser ? (
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className={`flex items-center gap-2.5 pl-1.5 pr-3.5 py-1.5 rounded-full transition-all cursor-pointer shadow-2xs border ${
-                    userDropdownOpen
-                      ? "bg-sky-50 border-sky-300 text-[#0E79B2] ring-2 ring-sky-100"
-                      : "bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800"
-                  }`}
+                  className="flex items-center gap-2 px-3 py-2 rounded-sm bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none"
                 >
                   {currentUser.photoURL && !avatarError ? (
-                    <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 border border-sky-400/60 shadow-2xs bg-slate-100 flex items-center justify-center">
-                      <img
-                        src={currentUser.photoURL}
-                        alt=""
-                        onError={() => setAvatarError(true)}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <img
+                      src={currentUser.photoURL}
+                      alt=""
+                      onError={() => setAvatarError(true)}
+                      className="w-5 h-5 rounded-full object-cover shrink-0"
+                    />
                   ) : (
-                    <div className="w-7 h-7 rounded-full bg-[#0E79B2] text-white font-bold flex items-center justify-center text-xs shadow-2xs shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#FF383C] text-white font-bold flex items-center justify-center text-[10px] shrink-0">
                       {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
                     </div>
                   )}
-                  <span className="text-xs font-bold max-w-[120px] truncate">
-                    {currentUser.displayName || "គណនី"}
+                  <span className="text-xs font-bold max-w-[100px] truncate text-white">
+                    {currentUser.displayName || t.nav.account}
                   </span>
-                  <ChevronDown className={`w-3.5 h-3.5 text-slate-400 shrink-0 transition-transform duration-200 ${userDropdownOpen ? "rotate-180 text-[#0E79B2]" : ""}`} />
+                  <ChevronDown className={`w-3.5 h-3.5 text-white/80 shrink-0 transition-transform ${userDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
 
                 {/* Profile Card Dropdown */}
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2.5 w-72 bg-white border border-slate-200 rounded-3xl p-4 shadow-2xl z-50 animate-in fade-in duration-150">
+                  <div className="absolute right-0 mt-2 w-64 bg-white border border-[#192048]/15 rounded-sm p-3.5 shadow-none z-50">
                     
                     {/* Header Info */}
-                    <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
+                    <div className="flex items-center gap-3 pb-3 border-b border-[#192048]/10">
                       {currentUser.photoURL && !avatarError ? (
-                        <div className="w-11 h-11 rounded-2xl overflow-hidden shrink-0 border border-sky-300 shadow-2xs bg-slate-100 flex items-center justify-center">
-                          <img
-                            src={currentUser.photoURL}
-                            alt=""
-                            onError={() => setAvatarError(true)}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+                        <img
+                          src={currentUser.photoURL}
+                          alt=""
+                          onError={() => setAvatarError(true)}
+                          className="w-10 h-10 rounded-full object-cover border border-[#192048]/20 shrink-0"
+                        />
                       ) : (
-                        <div className="w-11 h-11 rounded-2xl bg-[#0E79B2] text-white font-extrabold flex items-center justify-center text-sm shadow-2xs shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-[#192048] text-white font-extrabold flex items-center justify-center text-xs shadow-none shrink-0">
                           {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
                         </div>
                       )}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5 mb-0.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                          <span className="text-[10px] font-extrabold text-[#0E79B2] uppercase tracking-wider">សមាជិក E-ROBOT</span>
-                        </div>
-                        <p className="text-xs font-extrabold text-slate-900 truncate m-0">
+                        <p className="text-xs font-extrabold text-[#192048] truncate m-0">
                           {currentUser.displayName || "E-Robot Member"}
                         </p>
-                        <p className="text-[11px] text-slate-500 truncate mt-0.5 m-0 font-medium">
+                        <p className="text-[11px] text-[#192048]/60 truncate mt-0.5 m-0 font-medium">
                           {currentUser.email}
                         </p>
-                      </div>
-                    </div>
-
-                    {/* Account Details */}
-                    <div className="py-3 space-y-2 border-b border-slate-100">
-                      <div className="flex items-center justify-between text-xs text-slate-600 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
-                        <span className="flex items-center gap-1.5 text-slate-500">
-                          <User className="w-3.5 h-3.5 text-[#0E79B2] shrink-0" />
-                          ប្រភេទគណនី:
-                        </span>
-                        <strong className="text-slate-900 font-bold">{getProviderName()}</strong>
-                      </div>
-
-                      <div className="flex items-center justify-between text-xs text-slate-600 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
-                        <span className="flex items-center gap-1.5 text-slate-500">
-                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          ស្ថានភាព:
-                        </span>
-                        <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-extrabold text-[10px] border border-emerald-200">
-                          បានផ្ទៀងផ្ទាត់
-                        </span>
                       </div>
                     </div>
 
                     {/* Logout Action */}
                     <button
                       onClick={() => { setUserDropdownOpen(false); logout(); navigate("/"); }}
-                      className="w-full mt-3 py-2.5 px-3 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs active:scale-95"
+                      className="w-full mt-3 py-2 px-3 bg-[#FF383C] hover:bg-[#e02d31] text-white rounded-sm text-xs font-bold transition-colors flex items-center justify-center gap-2 cursor-pointer border-none shadow-none"
                     >
-                      <LogOut className="w-4 h-4 text-red-500 shrink-0" />
-                      <span>ចាកចេញពីគណនី</span>
+                      <LogOut className="w-4 h-4 text-white shrink-0" />
+                      <span>{t.nav.logout}</span>
                     </button>
 
                   </div>
@@ -267,10 +256,10 @@ export default function Navbar() {
               /* Single Login Button for Unauthenticated User */
               <button
                 onClick={() => handleOpenAuth("login")}
-                className="px-5 py-2 rounded-full text-xs font-bold bg-[#0E79B2] hover:bg-[#0C6C9F] text-white transition-all duration-200 cursor-pointer border-none shadow-xs hover:-translate-y-0.5 active:scale-95 flex items-center gap-2"
+                className="px-5 py-2 rounded-sm text-xs sm:text-sm font-bold bg-[#192048] hover:bg-[#232b57] text-white transition-colors cursor-pointer border-none shadow-none flex items-center gap-2"
               >
                 <LogIn className="w-4 h-4 shrink-0" />
-                <span>ចូលគណនី</span>
+                <span>{t.nav.login}</span>
               </button>
             )}
           </div>
@@ -278,7 +267,7 @@ export default function Navbar() {
           {/* Mobile Toggle Button */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-slate-700 hover:bg-slate-100 transition-colors border-none bg-transparent cursor-pointer"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-sm text-[#192048] hover:bg-[#192048]/10 transition-colors border-none bg-transparent cursor-pointer"
             aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -288,43 +277,42 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-md px-4 py-4 space-y-3 animate-in slide-in-from-top duration-200">
+          <div className="lg:hidden border-t border-[#192048]/15 bg-[#F7F7F7] px-4 py-5 space-y-4 shadow-none animate-in fade-in slide-in-from-top-2 duration-200">
             
-            {/* Authenticated User Status Card in Mobile Menu */}
+            {/* Authenticated User Banner Card */}
             {currentUser && (
-              <div className="p-4 bg-sky-50/80 border border-sky-200/80 rounded-2xl space-y-3 shadow-2xs">
-                <div className="flex items-center gap-3">
+              <div className="p-3.5 bg-white border border-[#192048]/10 rounded-sm flex items-center justify-between shadow-none">
+                <div className="flex items-center gap-3 min-w-0">
                   {currentUser.photoURL && !avatarError ? (
-                    <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 border-2 border-sky-400 shadow-2xs bg-slate-100 flex items-center justify-center">
-                      <img
-                        src={currentUser.photoURL}
-                        alt=""
-                        onError={() => setAvatarError(true)}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <img
+                      src={currentUser.photoURL}
+                      alt=""
+                      onError={() => setAvatarError(true)}
+                      className="w-9 h-9 rounded-full object-cover border border-[#192048]/20 shrink-0"
+                    />
                   ) : (
-                    <div className="w-11 h-11 rounded-full bg-[#0E79B2] text-white font-bold flex items-center justify-center text-sm shadow-xs shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-[#192048] text-white font-black flex items-center justify-center text-xs shrink-0">
                       {(currentUser.displayName || currentUser.email || "U")[0].toUpperCase()}
                     </div>
                   )}
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs font-extrabold text-slate-900 m-0 truncate">{currentUser.displayName || "Member"}</p>
-                    <p className="text-[11px] text-slate-500 m-0 mt-0.5 truncate">{currentUser.email}</p>
+                    <p className="text-xs font-extrabold text-[#192048] m-0 truncate">{currentUser.displayName || "Member"}</p>
+                    <p className="text-[11px] text-[#192048]/60 m-0 truncate font-medium">{currentUser.email}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-sky-200/60 text-xs">
-                  <span className="text-slate-600 text-[11px] font-medium">វិធីសាស្ត្រ: <strong>{getProviderName()}</strong></span>
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-extrabold text-[10px] border border-emerald-200">
-                    សមាជិក
-                  </span>
-                </div>
+                <button
+                  onClick={() => { closeAll(); logout(); navigate("/"); }}
+                  className="px-2.5 py-1.5 bg-red-50 text-[#FF383C] hover:bg-red-100 rounded-sm text-[11px] font-bold border border-red-200 transition-colors shrink-0 flex items-center gap-1 cursor-pointer shadow-none"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                  <span>{t.nav.logout}</span>
+                </button>
               </div>
             )}
 
-            {/* Mobile Nav Links */}
-            <div className="flex flex-col gap-1">
+            {/* Mobile Nav Links with Touch-friendly styling */}
+            <div className="flex flex-col gap-1.5">
               {NAV_ITEMS.map((item) => (
                 <NavLink
                   key={item.to}
@@ -332,10 +320,10 @@ export default function Navbar() {
                   end={item.to === "/"}
                   onClick={closeAll}
                   className={({ isActive }) =>
-                    `px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    `px-4 py-3 rounded-sm text-sm font-extrabold transition-all border ${
                       isActive 
-                        ? "bg-sky-50 text-[#0E79B2] font-bold border border-sky-200/80" 
-                        : "text-slate-700 hover:bg-slate-100"
+                        ? "bg-white text-[#FF383C] border-[#FF383C]/30 border-l-4 border-l-[#FF383C]" 
+                        : "bg-white text-[#192048] border-slate-200 hover:border-[#192048]"
                     }`
                   }
                 >
@@ -344,36 +332,50 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="border-t border-slate-100 pt-2" />
+            <div className="border-t border-[#192048]/10 pt-1" />
 
-            {/* Mobile Actions */}
-            <div className="flex flex-col gap-2">
-              <button 
-                onClick={() => { setMobileMenuOpen(false); setDonationModalOpen(true); }} 
-                className="w-full py-2.5 bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer"
+            {/* Language Switcher Setting Bar */}
+            <div className="flex items-center justify-between p-3 bg-white rounded-sm border border-[#192048]/10 shadow-none">
+              <div className="flex items-center gap-2 text-xs font-extrabold text-[#192048]">
+                <Globe className="w-4 h-4 text-[#192048]" />
+                <span>{language === "km" ? "ភាសា (Language)" : "Language (ភាសា)"}</span>
+              </div>
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-sm text-xs font-black bg-[#192048] hover:bg-[#232b57] text-white cursor-pointer border-none transition-colors shadow-none flex items-center gap-1.5"
               >
-                <Heart className="w-4 h-4 text-red-500 fill-red-500 shrink-0" />
-                <span>ឧបត្ថម្ភពួកយើង</span>
+                <span>{language === "km" ? "EN English" : "KM ខ្មែរ"}</span>
+              </button>
+            </div>
+
+            {/* Mobile Action Buttons */}
+            <div className="grid grid-cols-2 gap-2.5 pt-1">
+              <button 
+                onClick={() => { setMobileMenuOpen(false); setContactModalOpen(true); }} 
+                className="py-3 px-3 bg-white text-[#192048] border border-[#192048]/20 hover:border-[#192048] text-xs font-bold rounded-sm flex items-center justify-center gap-2 cursor-pointer shadow-none transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 text-[#192048] shrink-0" />
+                <span className="truncate">{t.nav.contact}</span>
               </button>
 
-              {!currentUser ? (
-                <button 
-                  onClick={() => handleOpenAuth("login")} 
-                  className="w-full py-2.5 bg-[#0E79B2] hover:bg-[#0C6C9F] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-                >
-                  <LogIn className="w-4 h-4 shrink-0" />
-                  <span>ចូលគណនី</span>
-                </button>
-              ) : (
-                <button 
-                  onClick={() => { closeAll(); logout(); navigate("/"); }} 
-                  className="w-full py-2.5 bg-red-50 border border-red-200 text-red-600 text-xs font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <LogOut className="w-4 h-4 shrink-0" />
-                  <span>ចាកចេញពីគណនី</span>
-                </button>
-              )}
+              <button 
+                onClick={() => { setMobileMenuOpen(false); setDonationModalOpen(true); }} 
+                className="py-3 px-3 bg-[#FF383C] hover:bg-[#e02d31] text-white text-xs font-bold rounded-sm flex items-center justify-center gap-2 cursor-pointer border-none shadow-none transition-colors"
+              >
+                <Heart className="w-4 h-4 fill-white text-white shrink-0" />
+                <span className="truncate">{t.nav.donate}</span>
+              </button>
             </div>
+
+            {!currentUser && (
+              <button 
+                onClick={() => handleOpenAuth("login")} 
+                className="w-full py-3 bg-[#192048] hover:bg-[#232b57] text-white text-xs sm:text-sm font-extrabold rounded-sm flex items-center justify-center gap-2 cursor-pointer border-none shadow-none transition-colors"
+              >
+                <LogIn className="w-4 h-4 shrink-0" />
+                <span>{t.nav.login}</span>
+              </button>
+            )}
 
           </div>
         )}
@@ -381,58 +383,106 @@ export default function Navbar() {
         {/* Donation QR Floating Modal */}
         {donationModalOpen && (
           <div className="absolute left-1/2 top-full -translate-x-1/2 mt-2 z-50 w-full max-w-sm px-4" ref={donationPanelRef}>
-            <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl text-center flex flex-col items-center relative animate-in fade-in duration-200">
+            <div className="bg-white border border-[#192048]/15 rounded-sm p-6 text-center flex flex-col items-center relative shadow-none">
               <button 
                 onClick={() => setDonationModalOpen(false)} 
-                className="absolute top-4 right-4 h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-xs border-none cursor-pointer hover:text-slate-900 transition-colors"
+                className="absolute top-4 right-4 h-7 w-7 rounded-full bg-[#F7F7F7] text-[#192048] flex items-center justify-center font-bold text-xs border-none cursor-pointer hover:bg-[#192048]/10 transition-colors"
               >
                 ✕
               </button>
 
-              <div className="h-11 w-11 rounded-full bg-red-50 text-red-500 flex items-center justify-center mb-3 mt-1">
+              <div className="h-11 w-11 rounded-full bg-red-50 text-[#FF383C] flex items-center justify-center mb-3 mt-1">
                 <QrCode className="w-5 h-5" />
               </div>
 
-              <h3 className="text-base font-bold text-slate-900 m-0">
-                ឧបត្ថម្ភគាំទ្រពួកយើង
+              <h3 className="text-base font-bold text-[#192048] m-0">
+                {t.donationModal.title}
               </h3>
-              <p className="text-xs font-medium text-slate-600 mt-1.5 mb-4 px-2 leading-relaxed">
-                សូមស្កែន QR Code ខាងក្រោមដើម្បីឧបត្ថម្ភដល់ក្រុមការងារ E-ROBOT
+              <p className="text-xs font-medium text-[#192048]/70 mt-1.5 mb-4 px-2 leading-relaxed">
+                {t.donationModal.desc}
               </p>
 
-              <div className="w-52 h-52 bg-slate-50 border border-slate-200 rounded-2xl p-3 shadow-inner flex items-center justify-center overflow-hidden mb-4">
+              <div className="w-52 h-52 bg-[#F7F7F7] border border-[#192048]/10 rounded-sm p-3 flex items-center justify-center overflow-hidden mb-4 shadow-none">
                 <img 
                   src={DonationQR} 
                   alt="Donation ABA Pay QR Code" 
-                  className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-105" 
+                  className="w-full h-full object-contain rounded-lg" 
                 />
               </div>
 
               {/* Firestore Donation Recording */}
-              <div className="w-full pt-3 border-t border-slate-100">
+              <div className="w-full pt-3 border-t border-[#192048]/10">
                 {donateSuccess ? (
-                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-xs font-bold flex items-center justify-center gap-2">
+                  <div className="p-3 bg-emerald-50 text-emerald-700 text-xs font-bold flex items-center justify-center gap-2 rounded-sm">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>បានកត់ត្រាការឧបត្ថម្ភ! អរគុណច្រើន</span>
+                    <span>{t.donationModal.thankYou}</span>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">
                     <input
                       type="text"
-                      placeholder="ចំនួនប្រាក់ (ឧទាហរណ៍: $5)"
+                      placeholder={language === "km" ? "ចំនួនប្រាក់ (ឧទាហរណ៍: $5)" : "Amount (e.g. $5)"}
                       value={donateAmount}
                       onChange={(e) => setDonateAmount(e.target.value)}
-                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0E79B2]"
+                      className="w-full px-3.5 py-2 bg-[#F7F7F7] border border-[#192048]/15 rounded-sm text-xs text-[#192048] placeholder-[#192048]/40 focus:outline-none"
                     />
                     <button
                       onClick={handleConfirmDonation}
                       disabled={donating}
-                      className="w-full py-2 bg-[#0E79B2] hover:bg-[#0C6C9F] text-white text-xs font-bold rounded-xl border-none cursor-pointer transition-all shadow-xs disabled:opacity-50"
+                      className="w-full py-2 bg-[#192048] hover:bg-[#232b57] text-white text-xs font-bold rounded-sm border-none cursor-pointer transition-colors shadow-none disabled:opacity-50"
                     >
-                      {donating ? "កំពុងកត់ត្រា..." : "កត់ត្រាការឧបត្ថម្ភក្នុងប្រព័ន្ធ"}
+                      {donating ? (language === "km" ? "កំពុងកត់ត្រា..." : "Recording...") : (language === "km" ? "កត់ត្រាការឧបត្ថម្ភក្នុងប្រព័ន្ធ" : "Record Donation in System")}
                     </button>
                   </div>
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Contact Telegram QR Floating Modal */}
+        {contactModalOpen && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#192048]/60 transition-opacity animate-in fade-in duration-200" 
+            onClick={() => setContactModalOpen(false)}
+          >
+            <div 
+              className="relative w-full max-w-sm sm:max-w-md bg-white border border-[#192048]/15 rounded-sm p-6 sm:p-8 shadow-none overflow-hidden" 
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setContactModalOpen(false)} 
+                className="absolute top-4 right-4 h-8 w-8 rounded-full bg-[#F7F7F7] text-[#192048] flex items-center justify-center font-bold text-xs border-none cursor-pointer hover:bg-[#192048]/10 transition-colors"
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+
+              <div className="text-center flex flex-col items-center pt-2">
+                <h2 className="text-xl sm:text-2xl font-black text-[#192048] m-0 leading-tight">
+                  {t.contactModal.title}
+                </h2>
+                <p className="mt-2 text-xs font-medium text-[#192048]/70 leading-relaxed max-w-xs">
+                  {t.contactModal.desc}
+                </p>
+
+                <div className="mt-6 w-56 h-56 sm:w-64 sm:h-64 bg-[#F7F7F7] border border-[#192048]/10 rounded-sm p-4 flex items-center justify-center overflow-hidden shadow-none">
+                  <img 
+                    src={TelegramQR} 
+                    alt="E-Robot Telegram Support QR" 
+                    className="w-full h-full object-contain rounded-lg" 
+                  />
+                </div>
+
+                <a 
+                  href="https://t.me/Suy_Kosal"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center justify-center gap-2.5 w-full rounded-sm bg-[#192048] hover:bg-[#232b57] text-white text-xs sm:text-sm font-bold py-3.5 transition-colors shadow-none no-underline cursor-pointer"
+                >
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>{t.contactModal.button}</span>
+                </a>
               </div>
             </div>
           </div>

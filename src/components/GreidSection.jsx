@@ -1,28 +1,31 @@
 import React from "react";
 import { NotebookTabs, Cpu, Route } from "lucide-react";
-
-const cardData = [
-  {
-    icon: NotebookTabs,
-    title: "កម្មវិធីសិក្សា",
-    desc: "កម្មវិធីសិក្សារបស់យើងត្រូវបានរៀបចំឡើង ដើម្បីផ្ដល់នូវជំនាញ និងចំណេះដឹងបច្ចេកវិទ្យា ដែលសិស្សានុសិស្សត្រូវការសម្រាប់ភាពជោគជ័យក្នុងសតវត្សទី២១។",
-  },
-  {
-    icon: Cpu,
-    title: "ប្រព័ន្ធអេកូឡូស៊ី",
-    desc: "បង្កើតសហគមន៍សិក្សាដែលភ្ជាប់អ្នកសិក្សា អ្នកអប់រំ និងអ្នកជំនាញ ដើម្បីចែករំលែកបទពិសោធន៍ និងរីកចម្រើនជាមួយគ្នា។",
-  },
-  {
-    icon: Route,
-    title: "វិថីសិក្សាច្បាស់លាស់",
-    desc: "ណែនាំសិស្សានុសិស្សតាមរយៈផែនការសិក្សាដែលមានរចនាសម្ព័ន្ធច្បាស់លាស់ ចាប់ពីមូលដ្ឋានរហូតដល់កម្រិតជំនាញ។",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function GridSection() {
+  const { t } = useLanguage();
+
+  const cardData = [
+    {
+      icon: NotebookTabs,
+      title: t.aboutUs.whyCards[0].title,
+      desc: t.aboutUs.whyCards[0].desc,
+    },
+    {
+      icon: Cpu,
+      title: t.aboutUs.whyCards[1].title,
+      desc: t.aboutUs.whyCards[1].desc,
+    },
+    {
+      icon: Route,
+      title: t.aboutUs.whyCards[2].title,
+      desc: t.aboutUs.whyCards[2].desc,
+    },
+  ];
+
   return (
-    <section className="py-6 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-2 lg:grid-cols-3">
+    <section className="py-6 bg-transparent">
+      <div className="mx-auto grid max-w-5xl gap-6 px-4 md:grid-cols-3">
 
         {cardData.map((item) => {
           const Icon = item.icon;
@@ -31,90 +34,42 @@ export default function GridSection() {
             <article
               key={item.title}
               className="
-                group
-                relative
-                overflow-hidden
-                rounded-3xl
+                rounded-sm
                 border
-                border-slate-200
+                border-[#192048]/10
                 bg-white
-                p-7
-                shadow-xs
-                transition-all
-                duration-300
-                hover:-translate-y-1.5
-                hover:border-[#0E79B2]/40
-                hover:shadow-md
+                p-6
+                shadow-none
+                flex
+                flex-col
+                justify-between
               "
             >
-              <div
-                className="
-                  absolute
-                  left-0
-                  top-0
-                  h-1
-                  w-0
-                  bg-[#0E79B2]
-                  transition-all
-                  duration-500
-                  group-hover:w-full
-                "
-              />
-
-              <div
-                className="
-                  mb-6
-                  flex
-                  h-14
-                  w-14
-                  items-center
-                  justify-center
-                  rounded-2xl
-                  bg-sky-50
-                  border
-                  border-sky-100
-                  transition-all
-                  duration-300
-                  group-hover:bg-[#0E79B2]
-                "
-              >
-                <Icon
-                  size={26}
+              <div>
+                <div
                   className="
-                    text-[#0E79B2]
-                    transition-colors
-                    duration-300
-                    group-hover:text-white
+                    mb-4
+                    flex
+                    h-12
+                    w-12
+                    items-center
+                    justify-center
+                    rounded-sm
+                    bg-[#192048]
+                    text-white
                   "
-                />
+                >
+                  <Icon size={22} className="text-white" />
+                </div>
+
+                <h3 className="mb-2 text-lg font-bold text-[#192048]">
+                  {item.title}
+                </h3>
+
+                <p className="leading-relaxed text-xs sm:text-sm text-[#192048]/80 font-medium">
+                  {item.desc}
+                </p>
               </div>
-
-              <h3
-                className="
-                  mb-3
-                  text-xl
-                  font-bold
-                  leading-snug
-                  text-slate-900
-                  transition-colors
-                  duration-300
-                  group-hover:text-[#0E79B2]
-                "
-              >
-                {item.title}
-              </h3>
-
-              <p
-                className="
-                  leading-relaxed
-                  text-xs
-                  sm:text-sm
-                  text-slate-600
-                  font-medium
-                "
-              >
-                {item.desc}
-              </p>
             </article>
           );
         })}

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { X, Lock, Mail, User, AlertCircle, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState(initialTab);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +47,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
       setError("");
       setSubmitting(true);
       await loginWithGoogle();
-      setSuccess("ចូលប្រើប្រាស់ជោគជ័យ!");
+      setSuccess(t.auth.successLogin);
       setTimeout(() => {
         onClose();
         handleReset();
@@ -54,8 +56,8 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
       console.error(err);
       setError(
         err.code === "auth/popup-closed-by-user"
-          ? "ការចូលប្រើត្រូវបានលុបចោល"
-          : "មិនអាចចូលប្រើប្រាស់តាម Google បានទេ សូមព្យាយាមម្តងទៀត"
+          ? "Cancelled"
+          : t.auth.errGeneric
       );
     } finally {
       setSubmitting(false);
@@ -68,17 +70,17 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
     setSuccess("");
 
     if (!email || !password) {
-      setError("សូមបញ្ចូលអ៊ីមែល និងលេខសម្ងាត់");
+      setError(t.auth.errFillAll);
       return;
     }
 
     if (activeTab === "signup" && !displayName) {
-      setError("សូមបញ្ចូលឈ្មោះរបស់អ្នក");
+      setError(t.auth.errFillAll);
       return;
     }
 
     if (password.length < 6) {
-      setError("លេខសម្ងាត់ត្រូវតែមានយ៉ាងតិច ៦ តួអក្សរ");
+      setError(t.auth.errPassLength);
       return;
     }
 
@@ -86,10 +88,10 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
       setSubmitting(true);
       if (activeTab === "signup") {
         await signUpWithEmail(email, password, displayName);
-        setSuccess("បង្កើតគណនីជោគជ័យ!");
+        setSuccess(t.auth.successSignUp);
       } else {
         await loginWithEmail(email, password);
-        setSuccess("ចូលប្រើប្រាស់ជោគជ័យ!");
+        setSuccess(t.auth.successLogin);
       }
       setTimeout(() => {
         onClose();
@@ -98,11 +100,11 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
     } catch (err) {
       console.error(err);
       if (err.code === "auth/email-already-in-use") {
-        setError("អ៊ីមែលនេះមានគណនីរួចហើយ");
+        setError(t.auth.errEmailInUse);
       } else if (err.code === "auth/invalid-credential" || err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
-        setError("អ៊ីមែល ឬលេខសម្ងាត់មិនត្រឹមត្រូវទេ");
+        setError(t.auth.errInvalidCred);
       } else {
-        setError("មានបញ្ហាកើតឡើង! សូមព្យាយាមម្តងទៀត");
+        setError(t.auth.errGeneric);
       }
     } finally {
       setSubmitting(false);
@@ -111,17 +113,17 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 transition-opacity animate-in fade-in duration-200"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#192048]/60 transition-opacity animate-in fade-in duration-200"
       onClick={() => { onClose(); handleReset(); }}
     >
       <div 
-        className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-md bg-white border border-[#192048]/15 rounded-sm p-6 sm:p-8 shadow-none overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={() => { onClose(); handleReset(); }}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center cursor-pointer hover:text-slate-900 hover:bg-slate-200 transition-colors border-none"
+          className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#F7F7F7] text-[#192048] flex items-center justify-center cursor-pointer hover:bg-[#192048]/10 transition-colors border-none"
           aria-label="Close"
         >
           <X className="w-4 h-4" />
@@ -129,23 +131,23 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
 
         {/* Header Title */}
         <div className="text-center mb-6">
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 m-0">
-            {activeTab === "login" ? "ចូលប្រើប្រាស់ E-ROBOT" : "បង្កើតគណនី E-ROBOT"}
+          <h2 className="text-xl sm:text-2xl font-black text-[#192048] m-0">
+            {activeTab === "login" ? t.auth.modalLoginTitle : t.auth.modalSignUpTitle}
           </h2>
-          <p className="text-xs text-slate-500 mt-1.5 font-medium">
-            {activeTab === "login" ? "សូមបញ្ចូលព័ត៌មានគណនីរបស់អ្នកដើម្បីចូលប្រើ" : "បំពេញព័ត៌មានខាងក្រោមដើម្បីចុះឈ្មោះគណនីថ្មី"}
+          <p className="text-xs text-[#192048]/70 mt-1.5 font-medium">
+            {activeTab === "login" ? t.auth.modalLoginSub : t.auth.modalSignUpSub}
           </p>
         </div>
 
         {/* Error / Success Alerts */}
         {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2 text-red-700 text-xs font-semibold animate-in fade-in">
-            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+          <div className="mb-4 p-3 bg-red-50 text-[#FF383C] rounded-sm flex items-center gap-2 text-xs font-semibold">
+            <AlertCircle className="w-4 h-4 shrink-0 text-[#FF383C]" />
             <span>{error}</span>
           </div>
         )}
         {success && (
-          <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-emerald-700 text-xs font-semibold animate-in fade-in">
+          <div className="mb-4 p-3 bg-emerald-50 text-emerald-700 rounded-sm flex items-center gap-2 text-xs font-semibold">
             <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
             <span>{success}</span>
           </div>
@@ -156,7 +158,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
           type="button"
           disabled={submitting}
           onClick={handleGoogleSignIn}
-          className="w-full py-3 px-4 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 rounded-2xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-3 transition-all shadow-2xs active:scale-[0.98] cursor-pointer disabled:opacity-50"
+          className="w-full py-3 px-4 bg-[#F7F7F7] hover:bg-[#192048]/5 text-[#192048] border border-[#192048]/15 rounded-sm font-bold text-xs sm:text-sm flex items-center justify-center gap-3 transition-colors shadow-none cursor-pointer disabled:opacity-50"
         >
           <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
             <path
@@ -176,14 +178,14 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
               d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.61 1.24 6.61l4.04 3.15c.95-2.85 3.6-4.96 6.72-4.96z"
             />
           </svg>
-          <span>បន្តជាមួយ Google</span>
+          <span>{t.auth.googleText}</span>
         </button>
 
         {/* Divider */}
         <div className="relative my-4 flex items-center justify-center">
-          <div className="w-full border-t border-slate-200" />
-          <span className="absolute px-3 bg-white text-slate-400 text-xs uppercase font-medium">
-            ឬ
+          <div className="w-full border-t border-[#192048]/10" />
+          <span className="absolute px-3 bg-white text-[#192048]/50 text-xs uppercase font-medium">
+            {t.auth.or}
           </span>
         </div>
 
@@ -191,47 +193,47 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
         <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
           {activeTab === "signup" && (
             <div className="relative flex items-center">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400 pointer-events-none z-10">
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-[#192048]/40 pointer-events-none z-10">
                 <User className="w-4 h-4" />
               </div>
               <input
                 type="text"
-                placeholder="ឈ្មោះពេញ"
+                placeholder={t.auth.fullName}
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 style={{ paddingLeft: "2.75rem" }}
-                className="w-full pr-4 py-3 bg-slate-50 border border-slate-300 rounded-2xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0E79B2] transition-all"
+                className="w-full pr-4 py-3 bg-[#F7F7F7] border border-[#192048]/15 rounded-sm text-xs sm:text-sm text-[#192048] placeholder-[#192048]/40 focus:outline-none transition-colors"
                 required={activeTab === "signup"}
               />
             </div>
           )}
 
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400 pointer-events-none z-10">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-[#192048]/40 pointer-events-none z-10">
               <Mail className="w-4 h-4" />
             </div>
             <input
               type="email"
-              placeholder="អ៊ីមែល"
+              placeholder={t.auth.email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{ paddingLeft: "2.75rem" }}
-              className="w-full pr-4 py-3 bg-slate-50 border border-slate-300 rounded-2xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0E79B2] transition-all"
+              className="w-full pr-4 py-3 bg-[#F7F7F7] border border-[#192048]/15 rounded-sm text-xs sm:text-sm text-[#192048] placeholder-[#192048]/40 focus:outline-none transition-colors"
               required
             />
           </div>
 
           <div className="relative flex items-center">
-            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400 pointer-events-none z-10">
+            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 flex items-center justify-center text-[#192048]/40 pointer-events-none z-10">
               <Lock className="w-4 h-4" />
             </div>
             <input
               type="password"
-              placeholder="លេខសម្ងាត់"
+              placeholder={t.auth.password}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{ paddingLeft: "2.75rem" }}
-              className="w-full pr-4 py-3 bg-slate-50 border border-slate-300 rounded-2xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-[#0E79B2] transition-all"
+              className="w-full pr-4 py-3 bg-[#F7F7F7] border border-[#192048]/15 rounded-sm text-xs sm:text-sm text-[#192048] placeholder-[#192048]/40 focus:outline-none transition-colors"
               required
             />
           </div>
@@ -239,34 +241,34 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full mt-1.5 py-3 bg-[#0E79B2] hover:bg-[#0C6C9F] text-white rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-xs active:scale-[0.98] border-none cursor-pointer disabled:opacity-50"
+            className="w-full mt-1.5 py-3 bg-[#192048] hover:bg-[#232b57] text-white rounded-sm font-bold text-xs sm:text-sm transition-colors border-none cursor-pointer disabled:opacity-50 shadow-none"
           >
-            {submitting ? "កំពុងដំណើរការ..." : activeTab === "login" ? "ចូលប្រើប្រាស់" : "បង្កើតគណនី"}
+            {submitting ? t.auth.submitting : activeTab === "login" ? t.auth.loginTitle : t.auth.signUpTitle}
           </button>
         </form>
 
         {/* Footer Prompt Link */}
-        <div className="mt-4 pt-3.5 border-t border-slate-100 text-center">
+        <div className="mt-4 pt-3.5 border-t border-[#192048]/10 text-center">
           {activeTab === "login" ? (
-            <p className="text-xs text-slate-600 font-medium m-0">
-              មិនទាន់មានគណនីមែនទេ?{" "}
+            <p className="text-xs text-[#192048]/70 font-medium m-0">
+              {t.auth.noAccount}{" "}
               <button
                 type="button"
                 onClick={() => handleSwitchTab("signup")}
-                className="text-[#0E79B2] font-bold hover:underline border-none bg-transparent cursor-pointer ml-1"
+                className="text-[#FF383C] font-bold hover:underline border-none bg-transparent cursor-pointer ml-1"
               >
-                ចុះឈ្មោះនៅទីនេះ
+                {t.auth.signUpHere}
               </button>
             </p>
           ) : (
-            <p className="text-xs text-slate-600 font-medium m-0">
-              មានគណនីរួចហើយមែនទេ?{" "}
+            <p className="text-xs text-[#192048]/70 font-medium m-0">
+              {t.auth.hasAccount}{" "}
               <button
                 type="button"
                 onClick={() => handleSwitchTab("login")}
-                className="text-[#0E79B2] font-bold hover:underline border-none bg-transparent cursor-pointer ml-1"
+                className="text-[#FF383C] font-bold hover:underline border-none bg-transparent cursor-pointer ml-1"
               >
-                ចូលប្រើនៅទីនេះ
+                {t.auth.loginHere}
               </button>
             </p>
           )}
