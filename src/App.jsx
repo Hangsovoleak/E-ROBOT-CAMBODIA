@@ -7,10 +7,10 @@ import AboutUs from './pages/AboutUs';
 import Goals from './pages/Goals';
 import Events from './pages/Events';
 import Sharings from './pages/Sharing';
-import Contact from './pages/Contact';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 import './index.css';
 
@@ -28,19 +28,19 @@ function App() {
   const location = useLocation();
 
   return (
-    <AuthProvider>
-      <div className="min-h-screen bg-white w-full flex flex-col font-kantumruy text-slate-800 antialiased selection:bg-[#0E79B2]/15 selection:text-[#0E79B2]">
+    <LanguageProvider>
+      <AuthProvider>
+        <div className="min-h-screen bg-[#F7F7F7] w-full flex flex-col font-kantumruy text-[#192048] antialiased">
         <ScrollToTop />
         <Navbar />
 
-        <main className="flex-grow flex flex-col w-full relative bg-white">
+        <main className="flex-grow flex flex-col w-full relative bg-[#F7F7F7]">
           <article key={location.pathname} className="page-transition flex-grow flex flex-col w-full">
             <Routes location={location}>
               <Route path="/" element={<AboutUs />} />
               <Route path="/home" element={<AboutUs />} />
               <Route path="/about" element={<Goals />} />
               <Route path="/services" element={<Events />} />
-              <Route path="/contact" element={<Contact />} />
               <Route path="/sharings" element={<Sharings />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
@@ -51,7 +51,8 @@ function App() {
 
         <Footer />
       </div>
-    </AuthProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

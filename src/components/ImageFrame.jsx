@@ -4,63 +4,20 @@ export default function ImageFrame({ src, alt, defaultImage }) {
   const imageSrc = Array.isArray(src) ? src[0] : src;
 
   return (
-    <div className="relative w-full group">
-      {/* Top-Left Accent Bar */}
-      <div 
-        className="
-          absolute 
-          -top-1.5 
-          left-6 
-          w-16 
-          sm:w-20 
-          h-1.5 
-          bg-[#0E79B2] 
-          rounded-full 
-          z-20 
-          transition-all 
-          duration-300 
-          group-hover:w-28
-        " 
-      />
+    <div className="relative w-full group pt-2 pb-2">
+      {/* Top Left Red Accent Line Bar */}
+      <div className="absolute top-0 left-0 w-24 sm:w-32 h-1.5 bg-[#FF383C] rounded-sm z-20" />
 
-      {/* Clean Single Image Container with Uniform Height */}
-      <div 
-        className="
-          relative 
-          z-10 
-          w-full
-          h-56
-          sm:h-64
-          md:h-72
-          lg:h-80
-          overflow-hidden 
-          rounded-3xl 
-          border 
-          border-slate-200 
-          bg-slate-100 
-          shadow-2xs 
-          transition-all 
-          duration-300 
-          group-hover:border-sky-300
-          group-hover:shadow-md
-        "
-      >
+      <div className="relative z-10 w-full h-56 sm:h-64 md:h-72 overflow-hidden rounded-sm border border-[#192048]/10 bg-[#192048]/5 shadow-none">
         <img
           src={imageSrc || defaultImage}
-          alt={alt || "E-ROBOT Activity"}
-          className="
-            w-full 
-            h-full 
-            object-cover 
-            object-center
-            block 
-            transition-transform 
-            duration-500 
-            ease-out 
-            group-hover:scale-105
-          "
+          alt={alt || "E-ROBOT Photo"}
+          className="w-full h-full object-cover object-center block transition-opacity duration-200 hover:opacity-95"
         />
       </div>
+
+      {/* Bottom Right Red Accent Line Bar */}
+      <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-1.5 bg-[#FF383C] rounded-sm z-20" />
     </div>
   );
 }
