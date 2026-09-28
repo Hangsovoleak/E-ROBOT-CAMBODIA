@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Menu, X, QrCode, LogIn, User, LogOut, Heart, CheckCircle2, ChevronDown, ShieldCheck, Mail, MessageCircle, Phone, MapPin } from "lucide-react";
+import { Menu, X, QrCode, LogIn, LogOut, Heart, CheckCircle2, ChevronDown, MessageCircle } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
@@ -20,6 +20,7 @@ export default function Navbar() {
   const [authTab, setAuthTab] = useState("login"); // "login" | "signup"
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [avatarError, setAvatarError] = useState(false);
+  const [prevPhotoURL, setPrevPhotoURL] = useState(null);
 
   // Donation state
   const [donateAmount, setDonateAmount] = useState("");
@@ -30,6 +31,12 @@ export default function Navbar() {
   const { language, toggleLanguage, t } = useLanguage();
   const navigate = useNavigate();
 
+  // Reset avatar error state when user photo changes
+  if (currentUser?.photoURL !== prevPhotoURL) {
+    setPrevPhotoURL(currentUser?.photoURL);
+    setAvatarError(false);
+  }
+
   const NAV_ITEMS = [
     { to: "/", label: t.nav.home },
     { to: "/about", label: t.nav.goals },
@@ -39,11 +46,6 @@ export default function Navbar() {
 
   const dropdownRef = useRef(null);
   const donationPanelRef = useRef(null);
-
-  // Reset avatar error state when currentUser changes
-  useEffect(() => {
-    setAvatarError(false);
-  }, [currentUser]);
 
   // Close menus when clicking outside
   useEffect(() => {
@@ -91,13 +93,6 @@ export default function Navbar() {
     } finally {
       setDonating(false);
     }
-  };
-
-  const getProviderName = () => {
-    if (!currentUser) return "Email";
-    const providerData = currentUser.providerData?.[0];
-    if (providerData?.providerId === "google.com") return "Google Account";
-    return "Email / Password";
   };
 
   return (

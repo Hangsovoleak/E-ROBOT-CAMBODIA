@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AboutUs from './pages/AboutUs';
-import Goals from './pages/Goals';
-import Events from './pages/Events';
-import Sharings from './pages/Sharing';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 
 import './index.css';
+
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const Goals = lazy(() => import('./pages/Goals'));
+const Events = lazy(() => import('./pages/Events'));
+const Sharings = lazy(() => import('./pages/Sharing'));
+const Login = lazy(() => import('./pages/Login'));
+const SignUp = lazy(() => import('./pages/SignUp'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -36,16 +37,24 @@ function App() {
 
         <main className="flex-grow flex flex-col w-full relative bg-[#F7F7F7]">
           <article key={location.pathname} className="page-transition flex-grow flex flex-col w-full">
-            <Routes location={location}>
-              <Route path="/" element={<AboutUs />} />
-              <Route path="/home" element={<AboutUs />} />
-              <Route path="/about" element={<Goals />} />
-              <Route path="/services" element={<Events />} />
-              <Route path="/sharings" element={<Sharings />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="*" element={<AboutUs />} />
-            </Routes>
+            <Suspense
+              fallback={
+                <div className="flex-grow flex items-center justify-center min-h-[50vh]">
+                  <div className="w-8 h-8 border-4 border-[#192048]/20 border-t-[#FF383C] rounded-full animate-spin"></div>
+                </div>
+              }
+            >
+              <Routes location={location}>
+                <Route path="/" element={<AboutUs />} />
+                <Route path="/home" element={<AboutUs />} />
+                <Route path="/about" element={<Goals />} />
+                <Route path="/services" element={<Events />} />
+                <Route path="/sharings" element={<Sharings />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="*" element={<AboutUs />} />
+              </Routes>
+            </Suspense>
           </article>
         </main>
 

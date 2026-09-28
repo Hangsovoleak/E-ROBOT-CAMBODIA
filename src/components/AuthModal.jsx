@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { X, Lock, Mail, User, AlertCircle, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
@@ -12,11 +12,13 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [prevModalState, setPrevModalState] = useState({ isOpen, initialTab });
 
   const { loginWithGoogle, loginWithEmail, signUpWithEmail } = useAuth();
 
   // Keep activeTab synchronized whenever modal opens
-  useEffect(() => {
+  if (prevModalState.isOpen !== isOpen || prevModalState.initialTab !== initialTab) {
+    setPrevModalState({ isOpen, initialTab });
     if (isOpen) {
       setActiveTab(initialTab);
       setError("");
@@ -25,7 +27,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = "login" }) {
       setPassword("");
       setDisplayName("");
     }
-  }, [isOpen, initialTab]);
+  }
 
   if (!isOpen) return null;
 
